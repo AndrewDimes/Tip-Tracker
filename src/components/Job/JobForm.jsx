@@ -1,24 +1,33 @@
-import React from 'react'
+import React, {useState} from 'react'
+import jobService from '../../utils/jobService'
+import { useHistory} from 'react-router-dom';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
-const JobForm = () => {
-
-    const [state, setState]       = useState({
+const JobForm = ({handleSubmit}) => {
+  const [error, setError ] = useState('')
+    const [state, setState] = useState({
         companyName: '',
         jobTitle: '',
     })
+    function handleChange(e){
+      setState({
+        ...state,
+        [e.target.name]: e.target.value
+      })
+    }
 
     return (
-<div style={{marginLeft:'20%', marginRight:'20%'}} class="ui form">
+<div style={{marginLeft:'20%', marginRight:'20%'}} className="ui form">
     <h1>Add Job</h1>
-  <div class="field">
+  <div className="field">
     <label>Company Name</label>
-    <input type="text"></input>
+    <input name="companyName" onChange={handleChange} type="text"></input>
   </div>
-  <div class="field">
+  <div className="field">
     <label>Job Title</label>
-    <input type="text"></input>
+    <input name="jobTitle" onChange={handleChange} type="text"></input>
   </div>
-  <div class="ui submit button">Submit</div>
+  <div onClick={() => handleSubmit(state)} className="ui submit button">Submit</div>
 </div>
     )
 }
