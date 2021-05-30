@@ -4,6 +4,7 @@ const jobsCtrl = require('../../controllers/jobs');
 
 /*---------- Public Routes ----------*/
 router.post('/createJob', jobsCtrl.createJob);
+router.get('/getJobs', jobsCtrl.getJobs)
 
 /*---------- Protected Routes ----------*/
 

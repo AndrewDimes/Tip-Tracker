@@ -1,14 +1,15 @@
 import React from 'react'
 
-const Job = () => {
+const Job = ({company, title}) => {
     return (
-        <div class="ui middle aligned divided list">
+        <div class="ui celled list">
         <div class="item">
           <div class="right floated content">
             <div class="ui button">Select</div>
           </div>
           <div class="content">
-            <h1></h1>
+            <div class="header">{company}</div>
+            {title}
           </div>
         </div>
       </div>
