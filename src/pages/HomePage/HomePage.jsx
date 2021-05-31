@@ -45,6 +45,10 @@ export default function HomePage() {
     setJobForm(true)
   }
 
+  const goBack = () => {
+    setJobForm(false)
+  }
+
 
   if(jobs !== null){
     jobItems = jobs.jobs.map((job, index) => {
@@ -59,8 +63,8 @@ export default function HomePage() {
 
   return (
     <>
-      {jobForm ? '' : <Header addJob={addJob} />}
-      {jobItems} 
+      <Header addJob={addJob} jobForm={jobForm} goBack={goBack} />
+      {jobForm ? '' : jobItems} 
       {jobForm ? <JobForm handleSubmit={handleSubmit} /> : ''}
     </>
   );
