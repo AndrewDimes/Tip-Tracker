@@ -11,10 +11,13 @@ export default function HomePage() {
   const [jobs, setJobs] = useState(null)
   const [jobForm, setJobForm] = useState(false)
   const history = useHistory();
+  let jobItems;
 
   useEffect(() => {
     jobIndex()
-  }, [jobs])
+  }, [])
+
+  
 
   async function jobIndex() {
     try {
@@ -43,16 +46,21 @@ export default function HomePage() {
   }
 
 
-  const jobItems = jobs.jobs.map((job, index) => {
-    return (<Job key={index} company={job.companyName} title={job.jobTitle} />)
-  })
+  if(jobs !== null){
+    jobItems = jobs.jobs.map((job, index) => {
+      return (<Job key={index} company={job.companyName} title={job.jobTitle} />)
+    })
+  } else {
+    jobItems = null
+  }
+
 
 
 
   return (
     <>
       {jobForm ? '' : <Header addJob={addJob} />}
-      {jobItems}
+      {jobItems} 
       {jobForm ? <JobForm handleSubmit={handleSubmit} /> : ''}
     </>
   );
