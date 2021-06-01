@@ -10,12 +10,17 @@ export default function HomePage() {
   const [error, setError] = useState('')
   const [jobs, setJobs] = useState(null)
   const [jobForm, setJobForm] = useState(false)
+  const [mySwitch, setMySwitch] = useState(false)
   const history = useHistory();
   let jobItems;
 
   useEffect(() => {
     jobIndex()
-  }, [])
+  }, [jobForm])
+
+  useEffect(() => {
+    jobIndex()
+  }, [mySwitch])
 
   
 
@@ -31,10 +36,9 @@ export default function HomePage() {
   }
   async function handleSubmit(state) {
     try {
-      await jobService.createJob(state);
+      await jobService.createJob(state)
       // Route to wherever you want!
       setJobForm(false)
-
     } catch (err) {
       // Invalid user data (probably duplicate email)
       setError(err.message)
@@ -43,16 +47,26 @@ export default function HomePage() {
 
   const addJob = () => {
     setJobForm(true)
+    setMySwitch(true)
   }
 
   const goBack = () => {
     setJobForm(false)
+    setMySwitch(false)
   }
 
+  async function deleteJob(id){
+    try {
+      await jobService.deleteJob(id).then(mySwitch ? setMySwitch(false) : setMySwitch(true))
+      mySwitch ? setMySwitch(false) : setMySwitch(true)
+    } catch(err){
+      setError(err.message)
+    }
+  }
 
   if(jobs !== null){
     jobItems = jobs.jobs.map((job, index) => {
-      return (<Job key={index} company={job.companyName} title={job.jobTitle} />)
+      return (<Job id={job._id} deleteJob={deleteJob} key={index} company={job.companyName} title={job.jobTitle} />)
     })
   } else {
     jobItems = null

@@ -5,7 +5,8 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   createJob,
-  getJobs
+  getJobs,
+  deleteJob
 };
 
 async function createJob(req, res) {
@@ -30,6 +31,15 @@ async function getJobs(req, res) {
   } catch (err) {
     res.json(err)
   }
+}
+
+function deleteJob(req, res){
+  console.log(req.params.id)
+  const job = Job.findByIdAndDelete(req.params.id).exec().then(doc => {
+    if(!doc) {return res.status(404).end();}
+    return res.status(204).end();
+  })
+  .catch(err => next(err));
 }
 
 

@@ -30,7 +30,25 @@ function getJobs() {
     .then(res => res.json());
 }
 
+function deleteJob(id){
+  console.log('in jobservice')
+  return fetch(BASE_URL + id, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken(),
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => {
+      if (res.ok) return res.json();
+      throw new Error('cant delete')
+    })
+    .then(({ token }) => tokenService.removeToken(token));
+}
+
+
 export default {
   createJob,
-  getJobs
+  getJobs,
+  deleteJob
 };
