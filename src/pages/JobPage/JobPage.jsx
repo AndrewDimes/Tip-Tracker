@@ -6,7 +6,7 @@ import wageService from '../../utils/wageService'
 import WageForm from '../../components/Wage/WageForm';
 import Calendar from 'react-calendar'
 
-const JobPage = () => {
+const JobPage = ({handleLogOut}) => {
     const [error, setError] = useState('')
     const [job, setJob] = useState({})
     const [jobSwitch, setJobSwitch] = useState(false)
@@ -42,7 +42,7 @@ const JobPage = () => {
     if(wageFormView !== true){
         return (
             <>
-                {logIncome ? <Header job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => {setLogIncome(false)}} /> : <Header job={job} jobSwitch={jobSwitch} jobPage={true} goBack={goBack} />}
+                {logIncome ? <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => {setLogIncome(false)}} /> : <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={goBack} />}
                 <br />
                 {logIncome ? '' :
                     <h1>Just finished work?</h1>}
@@ -65,7 +65,7 @@ const JobPage = () => {
     } else {
         return (
             <>
-            <Header job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => {setWageFormView(false)}} />
+            <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => {setWageFormView(false)}} />
             <WageForm />
             </>
         )

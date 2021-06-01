@@ -18,7 +18,7 @@ function App() {
     setUser(userService.getUser()) // getting the user from localstorage decoding the jwt
   }
 
-  function handleLogout(){
+  function handleLogOut(){
     userService.logout();
     setUser({user: null})
   }
@@ -36,10 +36,10 @@ function App() {
             <> 
              <Switch>
                 <Route exact path="/">
-                   <HomePage />
+                   <HomePage handleLogOut={handleLogOut} />
                 </Route>
                 <Route exact path="/:id">
-                   <JobPage />
+                   <JobPage handleLogOut={handleLogOut} />
                 </Route>
             </Switch>
             </>

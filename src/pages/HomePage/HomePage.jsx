@@ -6,7 +6,7 @@ import jobService from '../../utils/jobService'
 import { useHistory } from 'react-router-dom';
 
 
-export default function HomePage() {
+export default function HomePage({handleLogOut}) {
   const [error, setError] = useState('')
   const [jobs, setJobs] = useState(null)
   const [jobForm, setJobForm] = useState(false)
@@ -82,7 +82,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Header addJob={addJob} jobForm={jobForm} goBack={goBack} />
+      <Header handleLogOut={handleLogOut} addJob={addJob} jobForm={jobForm} goBack={goBack} />
       {jobForm ? '' : jobItems} 
       {jobForm ? <JobForm handleSubmit={handleSubmit} /> : ''}
     </>
