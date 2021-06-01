@@ -6,7 +6,8 @@ const SECRET = process.env.SECRET;
 module.exports = {
   createJob,
   getJobs,
-  deleteJob
+  deleteJob,
+  getJob
 };
 
 async function createJob(req, res) {
@@ -28,6 +29,16 @@ async function getJobs(req, res) {
   try {
     const jobs = await Job.find({user:req.user})
     res.status(200).json({ jobs })
+  } catch (err) {
+    res.json(err)
+  }
+}
+
+async function getJob(req, res) {
+  console.log('in controller')
+  try {
+    const job = await Job.findById(req.params.id)
+    res.status(200).json({ job })
   } catch (err) {
     res.json(err)
   }

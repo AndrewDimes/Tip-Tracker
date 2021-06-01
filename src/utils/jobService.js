@@ -30,6 +30,16 @@ function getJobs() {
     .then(res => res.json());
 }
 
+function getJob(id) {
+  console.log('getjobbbb', id)
+  return fetch(BASE_URL + 'getJob/' + id, {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  })
+    .then(res => res.json());
+}
 function deleteJob(id){
   console.log('in jobservice')
   return fetch(BASE_URL + id, {
@@ -50,5 +60,6 @@ function deleteJob(id){
 export default {
   createJob,
   getJobs,
-  deleteJob
+  deleteJob,
+  getJob
 };
