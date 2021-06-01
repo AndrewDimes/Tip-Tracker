@@ -55,6 +55,11 @@ export default function HomePage() {
     setMySwitch(false)
   }
 
+  const goToJob = (id) => {
+    console.log(id)
+    history.push(`${id}`)
+  }
+
   async function deleteJob(id){
     try {
       await jobService.deleteJob(id).then(mySwitch ? setMySwitch(false) : setMySwitch(true))
@@ -66,7 +71,7 @@ export default function HomePage() {
 
   if(jobs !== null){
     jobItems = jobs.jobs.map((job, index) => {
-      return (<Job id={job._id} deleteJob={deleteJob} key={index} company={job.companyName} title={job.jobTitle} />)
+      return (<Job goToJob={goToJob} id={job._id} deleteJob={deleteJob} key={index} company={job.companyName} title={job.jobTitle} />)
     })
   } else {
     jobItems = null

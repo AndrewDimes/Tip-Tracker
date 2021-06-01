@@ -4,6 +4,7 @@ import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import HomePage from '../HomePage/HomePage';
+import JobPage from '../JobPage/JobPage';
 import userService from '../../utils/userService'
 
 
@@ -36,6 +37,9 @@ function App() {
              <Switch>
                 <Route exact path="/">
                    <HomePage />
+                </Route>
+                <Route exact path="/:id">
+                   <JobPage />
                 </Route>
             </Switch>
             </>

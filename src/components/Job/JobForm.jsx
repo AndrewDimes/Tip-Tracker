@@ -18,7 +18,6 @@ const JobForm = ({handleSubmit}) => {
 
     return (
 <div style={{marginLeft:'20%', marginRight:'20%'}} className="ui form">
-    <h1>Add Job</h1>
   <div className="field">
     <label>Company Name</label>
     <input name="companyName" onChange={handleChange} type="text"></input>
