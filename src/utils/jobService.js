@@ -31,7 +31,6 @@ function getJobs() {
 }
 
 function getJob(id) {
-  console.log('getjobbbb', id)
   return fetch(BASE_URL + 'getJob/' + id, {
     method: 'GET',
     headers: {

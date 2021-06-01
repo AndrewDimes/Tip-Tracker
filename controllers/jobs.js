@@ -35,7 +35,6 @@ async function getJobs(req, res) {
 }
 
 async function getJob(req, res) {
-  console.log('in controller')
   try {
     const job = await Job.findById(req.params.id)
     res.status(200).json({ job })
@@ -45,7 +44,6 @@ async function getJob(req, res) {
 }
 
 function deleteJob(req, res){
-  console.log(req.params.id)
   const job = Job.findByIdAndDelete(req.params.id).exec().then(doc => {
     if(!doc) {return res.status(404).end();}
     return res.status(204).end();
