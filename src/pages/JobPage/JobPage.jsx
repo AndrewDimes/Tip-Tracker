@@ -33,6 +33,27 @@ const JobPage = ({handleLogOut}) => {
     }, [jobSwitch])
 
 
+    async function wageFormSubmit(wageInfo){
+        const info = {
+            wage: wageInfo.wage,
+            tips: wageInfo.tips,
+            hours: wageInfo.hours,
+            date: value
+        }
+        try {
+            await wageService.createWage(info, window.location.pathname.substring(1))
+            // Route to wherever you want!
+            setLogIncome(false)
+            setWageFormView(false)
+            setJobSwitch(true)
+            
+          } catch (err) {
+            // Invalid user data (probably duplicate email)
+            setError(err.message)
+          }
+        
+
+    }
 
 
     function goBack() {
@@ -66,7 +87,7 @@ const JobPage = ({handleLogOut}) => {
         return (
             <>
             <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => {setWageFormView(false)}} />
-            <WageForm />
+            <WageForm wageFormSubmit={wageFormSubmit}/>
             </>
         )
     }

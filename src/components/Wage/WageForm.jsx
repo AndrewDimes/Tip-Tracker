@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const WageForm = () => {
+const WageForm = ({wageFormSubmit}) => {
     const [error, setError] = useState('')
     const [state, setState] = useState({
         wage: null,
@@ -28,7 +28,7 @@ const WageForm = () => {
                 <label>Hours</label>
                 <input name="hours" onChange={handleChange} type="number"></input>
             </div>
-            <div className="ui submit button">Submit</div>
+            <div onClick={() => {wageFormSubmit(state)}} className="ui submit button">Submit</div>
         </div>
     )
 }

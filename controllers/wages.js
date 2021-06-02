@@ -4,10 +4,11 @@ const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
 module.exports = {
-    create
+    createWage
   };
 
-  async function create(req, res) {
+  async function createWage(req, res) {
+    console.log('in wage controller')
     const user = await User.findOne({ _id: req.user._id });
     const job = await Job.findById(req.params.id)
     try {
@@ -20,4 +21,12 @@ module.exports = {
       console.log(err)
       res.status(400).json(err);
     }
+  }
+
+  function createJWT(user) {
+    return jwt.sign(
+      { user }, // data payload
+      SECRET,
+      { expiresIn: '24h' }
+    );
   }

@@ -2,6 +2,6 @@ const express = require('express');
 const router = express.Router();
 const wagesCtrl = require('../../controllers/wages');
 
-router.post('/getJob/:id/wages', wagesCtrl.create);
+router.post('/createWage/:id/', wagesCtrl.createWage);
  
 module.exports = router;
