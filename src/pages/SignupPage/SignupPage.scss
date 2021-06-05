@@ -97,14 +97,14 @@
     @include flex(column, center);
     h1 {
       color: white;
-      width: 600px;
+      width: 50%;
       font-size: 3rem;
       letter-spacing: 0.1rem;
     }
     p {
       margin-top: 3rem;
       color: white;
-      width: 600px;
+      width: 50%;
       line-height: 2rem;
       font-size: 1.3rem;
       letter-spacing: 0.1rem;
@@ -119,8 +119,8 @@
       background-size: cover;
       position: absolute;
       clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
-      height: 400px;
-      width: 400px;
+      height: 25%;
+      width: 25%;
       bottom: 5%;
       left: -5%;
     }
@@ -131,8 +131,8 @@
       background-size: cover;
       position: absolute;
       clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-      height: 400px;
-      width: 400px;
+      height: 25%;
+      width: 25%;
       top: 5%;
       right: 5%;
     }
