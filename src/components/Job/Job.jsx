@@ -1,20 +1,27 @@
-import React from 'react'
+import React from 'react';
+import './Job.scss';
+import { BiSelectMultiple } from 'react-icons/bi';
+import { BsTrash } from 'react-icons/bs';
 
-const Job = ({company, title, deleteJob, id, goToJob}) => {
-    return (
-        <div class="ui celled list">
-        <div class="item">
-          <div class="right floated content">
-          <span class="ui button" onClick={() => deleteJob(id)}><i class="trash icon"></i></span>
-            <div class="ui button" onClick={() => goToJob(id)}>Select</div>
+const Job = ({ company, title, deleteJob, id, goToJob }) => {
+  return (
+    <div className="job">
+      <div className="job-item">
+        <div className="job-item__icon">
+          <div className="job-item__icon-icon" onClick={() => deleteJob(id)}>
+            <BsTrash />
           </div>
-          <div class="content">
-            <div class="header">{company}</div>
-            {title}
+          <div className="job-item__icon-icon" onClick={() => goToJob(id)}>
+            <BiSelectMultiple />
           </div>
         </div>
+        <div className="job-item__details">
+          <div className="job-item__details-info">{company}</div>
+          <div className="job-item__details-info">{title}</div>
+        </div>
       </div>
-    )
-}
+    </div>
+  );
+};
 
-export default Job
+export default Job;
