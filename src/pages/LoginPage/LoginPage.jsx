@@ -1,88 +1,90 @@
 import React, { useState } from 'react';
-import './LoginPage.css';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
+import './LoginPage.scss';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Logo from '../../img/money-tree9.png';
 import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from 'semantic-ui-react';
 
-export default function LoginPage(props){
-    const [invalidForm, setValidForm] = useState(false);
-    const [error, setError ]          = useState('')
-    const [state, setState]       = useState({
-        email: '',
-        password: '',
-    })
+export default function LoginPage(props) {
+  const [invalidForm, setValidForm] = useState(false);
+  const [error, setError] = useState('');
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+  });
 
-    const history = useHistory();
-    
-    function handleChange(e){
-      setState({
-        ...state,
-        [e.target.name]: e.target.value
-      })
+  const history = useHistory();
+
+  function handleChange(e) {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      await userService.login(state);
+      // Route to wherever you want!
+      props.handleSignUpOrLogin();
+      history.push('/');
+    } catch (err) {
+      // Invalid user data (probably duplicate email)
+      setError(err.message);
     }
-   
-    
+  }
 
-    async function handleSubmit(e){
-      e.preventDefault()
-              
-      try {
-          await userService.login(state);
-          // Route to wherever you want!
-          props.handleSignUpOrLogin()
-          history.push('/')
-          
-        } catch (err) {
-          // Invalid user data (probably duplicate email)
-          setError(err.message)
-        }
-    }
+  return (
+    <>
+      <section className="login-page">
+        <div className="login-page__header">
+          <img src={Logo} alt="" />
+          <h1>Log-in</h1>
+        </div>
 
-    return (
-        <>
-          <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-            <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='teal' textAlign='center'>
-            <Image src='https://i.imgur.com/s4LrnlU.png' /> Log-in to your account
-            </Header>
-            <Form  autoComplete="off"  onSubmit={handleSubmit}>
-               <Segment stacked>
-                  <Form.Input
-                    type="email"
-                   
-                    name="email"
-                    placeholder="email"
-                    value={ state.email}
-                    onChange={handleChange}
-                    required
-                  />
-                  <Form.Input
-                    name="password"
-                    type="password"
-                    placeholder="password"
-                    value={ state.password}
-                    onChange={handleChange}
-                    required
-                  />
-                <Button
-                  color='teal'
-                  fluid size='large'
-                  type="submit"
-                  className="btn"
-                  disabled={invalidForm}
-                >
-                  Login
-                </Button>
-              </Segment>
-            </Form>
-            <Message>
-              New to us? <Link to='/signup'>Sign Up</Link>
-            </Message>
-            {error ? <ErrorMessage error={error} /> : null}
-            </Grid.Column>
-          </Grid>
-        </>
-      );
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={state.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={state.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="btn" disabled={invalidForm}>
+            Login
+          </button>
+        </form>
+        {error ? <ErrorMessage error={error} /> : null}
+        <small>
+          New to us?{' '}
+          <Link to="/signup">
+            <span>Sign Up</span>
+          </Link>
+        </small>
+        {/* <Message>
+          New to us? <Link to="/signup">Sign Up</Link>
+        </Message> */}
+      </section>
+    </>
+  );
 }
-
