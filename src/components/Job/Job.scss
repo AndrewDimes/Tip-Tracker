@@ -1,0 +1,46 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.job {
+  @include flex(row, center);
+
+  margin-bottom: 0.5rem;
+  height: 10vh;
+
+  .job-item {
+    @include flex(row, space-between);
+    width: 25%;
+    height: 5vh;
+    background-color: $neon-02-2-hex;
+    padding: 3rem;
+    border-radius: 20px;
+    &:hover {
+      box-shadow: 5px 25px 40px rgba(0, 0, 0, 0.644);
+    }
+    .job-item__icon {
+      @include flex(row, space-between);
+      width: 15%;
+      cursor: pointer;
+      .job-item__icon-icon {
+        color: white;
+        font-size: 2rem;
+        letter-spacing: 0.1rem;
+        transition: 0.2s ease;
+        &:hover {
+          color: $main-text-color;
+        }
+      }
+    }
+    .job-item__details {
+      @include flex(row, space-between);
+      width: 55%;
+
+      .job-item__details-info {
+        color: white;
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}
