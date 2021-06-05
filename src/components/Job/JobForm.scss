@@ -1,0 +1,62 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.job-form {
+  @include flex(column, center);
+  height: 70vh;
+
+  img {
+    height: 400px;
+    margin-bottom: 4rem;
+    border-radius: 30px;
+  }
+  .job-form__field-container {
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 2rem;
+  }
+  .job-form__field {
+    @include flex(column, center);
+    label {
+      color: white;
+      letter-spacing: 0.1rem;
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
+    }
+    input {
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      width: 500px;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid white;
+      color: white;
+      outline: none;
+      font-size: 1.3rem;
+      letter-spacing: 0.1rem;
+      text-align: center;
+      color: $neon-02-5-hex;
+      &::placeholder {
+        opacity: 0.2;
+        color: white;
+      }
+    }
+  }
+  .job-form__button {
+    width: 500px;
+    padding: 1rem 0rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: 0.3s ease;
+    background-color: $neon-02-2-hex;
+    letter-spacing: 0.1rem;
+    &:hover {
+      background-color: white;
+      color: $main-text-color;
+    }
+  }
+}
