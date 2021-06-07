@@ -4,7 +4,7 @@ const wageSchema = new mongoose.Schema({
   wage: {type: Number, required: true},
   tips: {type: Number, required: true},
   hours: {type: Number, required: true},
-  date: {type: Date, required: true}
+  date: {type: Date, required: true, unique: true}
 }, {
   timestamps: true
 })

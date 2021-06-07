@@ -25,7 +25,7 @@ const Header = ({
             {' '}
             Log Out{' '}
           </span>
-          <span style={{ marginLeft: '10%' }}>
+          <span style={{ color:'black', marginLeft: '10%' }}>
             {jobSwitch ? job.job.companyName : ''}
           </span>
           <span

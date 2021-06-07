@@ -17,15 +17,15 @@ const WageForm = ({wageFormSubmit}) => {
     return (
         <div style={{ marginLeft: '20%', marginRight: '20%' }} className="ui form">
             <div className="field">
-                <label>Hourly Wage</label>
+                <label style={{color: 'white'}}>Hourly Wage</label>
                 <input name="wage" onChange={handleChange} type="number"></input>
             </div>
             <div className="field">
-                <label>Tips</label>
+                <label style={{color: 'white'}}>Tips</label>
                 <input name="tips" onChange={handleChange} type="number"></input>
             </div>
             <div className="field">
-                <label>Hours</label>
+                <label style={{color: 'white'}}>Hours</label>
                 <input name="hours" onChange={handleChange} type="number"></input>
             </div>
             <div onClick={() => {wageFormSubmit(state)}} className="ui submit button">Submit</div>
