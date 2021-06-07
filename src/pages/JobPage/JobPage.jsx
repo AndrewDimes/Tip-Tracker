@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import jobService from '../../utils/jobService'
 import wageService from '../../utils/wageService'
 import WageForm from '../../components/Wage/WageForm';
+import WageDetail from '../../components/Wage/WageDetail';
 import Calendar from 'react-calendar'
 
 const JobPage = ({handleLogOut}) => {
@@ -13,6 +14,7 @@ const JobPage = ({handleLogOut}) => {
     const [value, onChange] = useState(new Date());
     const [logIncome, setLogIncome] = useState(false)
     const [wageFormView, setWageFormView] = useState(false)
+    const [viewIncome, setViewIncome] = useState(false)
 
 
 
@@ -31,6 +33,7 @@ const JobPage = ({handleLogOut}) => {
     useEffect(() => {
         getJob()
     }, [jobSwitch])
+  
 
 
     async function wageFormSubmit(wageInfo){
@@ -59,17 +62,18 @@ const JobPage = ({handleLogOut}) => {
     function goBack() {
         window.history.back()
     }
-
+if(viewIncome !== true){
     if(wageFormView !== true){
         return (
             <>
                 {logIncome ? <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => {setLogIncome(false)}} /> : <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={goBack} />}
                 <br />
                 {logIncome ? '' :
-                    <h1>Just finished work?</h1>}
+                    <h1 style={{color: 'white'}}>Just finished work?</h1>}
                 {logIncome ? '' : <button onClick={() => {setLogIncome(true)}} class="ui primary button">
                     Log Income
                 </button>} <br /><br />
+                {logIncome ? <h1 style={{color: 'white'}}>Choose a date</h1> : ''}
                 {logIncome ? <Calendar
                     onChange={onChange}
                     value={value}
@@ -77,8 +81,8 @@ const JobPage = ({handleLogOut}) => {
                 {logIncome ? <button onClick={() => {setWageFormView(true)}} class="ui button">
                     Enter
                 </button> : ''}
-                {logIncome ? '' : <h1>How much have you earned?</h1>}
-                {logIncome ? '' : <button class="ui primary button">
+                {logIncome ? '' : <h1 style={{color: 'white'}}>How much have you earned?</h1>}
+                {logIncome ? '' : <button onClick={() => {setViewIncome(true)}} class="ui primary button">
                     View Income
                 </button>}
             </>
@@ -91,6 +95,16 @@ const JobPage = ({handleLogOut}) => {
             </>
         )
     }
+} else {
+    return (
+        <>
+        <Header goBack={() => {setViewIncome(false)}} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
+        <WageDetail />
+        </>
+    )
+
+}
+
 }
 
 export default JobPage
