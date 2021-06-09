@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const WageDetail = ({wageData, theWageView, month, weekView, monthView, yearView}) => {
+const WageDetail = ({wageData, theWageView, month, weekView, monthView, yearView, year, monday, sunday}) => {
     return (
         <div>
             <div class="three ui buttons">
@@ -9,8 +9,8 @@ const WageDetail = ({wageData, theWageView, month, weekView, monthView, yearView
                 <button onClick={() => theWageView('y')} class="ui button">Yearly</button>
             </div><br />
             {monthView ? <h1 style={{color:'white'}}>{month}</h1> : ''}
-            {weekView ? <h1 style={{color:'white'}}>00/00/0000 - 00/00/0000</h1> : ''}
-            {yearView ? <h1 style={{color:'white'}}>0000</h1> : ''}
+            {weekView ? <h1 style={{color:'white'}}>{monday} - {sunday}</h1> : ''}
+            {yearView ? <h1 style={{color:'white'}}>{year}</h1> : ''}
             <blockquote style={{ color: 'white', backgroundColor: 'gray' }}>Income information</blockquote>
             <div class="ui middle aligned divided list">
                 <div class="item">
