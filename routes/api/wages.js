@@ -3,6 +3,6 @@ const router = express.Router();
 const wagesCtrl = require('../../controllers/wages');
 
 router.post('/createWage/:id/', wagesCtrl.createWage);
-router.get('/getWages/:id/', wagesCtrl.getWages)
+router.get('/getWages/:id/:viewBy', wagesCtrl.getWages)
  
 module.exports = router;

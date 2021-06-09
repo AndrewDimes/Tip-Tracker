@@ -7,7 +7,7 @@ import WageForm from '../../components/Wage/WageForm';
 import WageDetail from '../../components/Wage/WageDetail';
 import Calendar from 'react-calendar'
 
-const JobPage = ({handleLogOut}) => {
+const JobPage = ({ handleLogOut }) => {
     const [error, setError] = useState('')
     const [job, setJob] = useState({})
     const [jobSwitch, setJobSwitch] = useState(false)
@@ -16,6 +16,11 @@ const JobPage = ({handleLogOut}) => {
     const [wageFormView, setWageFormView] = useState(false)
     const [viewIncome, setViewIncome] = useState(false)
     const [wageData, setWageData] = useState({})
+    const [viewBy, setViewBy] = useState('m')
+    const [month, setMonth] = useState('')
+    const [weekView, setWeekView] = useState(false)
+    const [monthView, setMonthView] = useState(false)
+    const [yearView, setYearView] = useState(false)
 
 
 
@@ -31,24 +36,27 @@ const JobPage = ({handleLogOut}) => {
         }
     }
 
-    async function getWages(){
+    async function getWages() {
         try {
-            const data = await wageService.getWages(window.location.pathname.substring(1))
+            const data = await wageService.getWages(window.location.pathname.substring(1), viewBy)
             console.log(data)
             setWageData(data)
-        } catch(err) {
+        } catch (err) {
             setError(err.message)
         }
     }
 
     useEffect(() => {
         getJob()
-        getWages()
     }, [jobSwitch])
-  
+    useEffect(() => {
+        getDate()
+        getWages()
+    }, [viewBy])
 
 
-    async function wageFormSubmit(wageInfo){
+
+    async function wageFormSubmit(wageInfo) {
         const info = {
             wage: wageInfo.wage,
             tips: wageInfo.tips,
@@ -61,61 +69,83 @@ const JobPage = ({handleLogOut}) => {
             setLogIncome(false)
             setWageFormView(false)
             setJobSwitch(true)
-            
-          } catch (err) {
+
+        } catch (err) {
             // Invalid user data (probably duplicate email)
             setError(err.message)
-          }
-        
+        }
+
 
     }
-
 
     function goBack() {
         window.history.back()
     }
-if(viewIncome !== true){
-    if(wageFormView !== true){
-        return (
-            <>
-                {logIncome ? <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => {setLogIncome(false)}} /> : <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={goBack} />}
-                <br />
-                {logIncome ? '' :
-                    <h1 style={{color: 'white'}}>Just finished work?</h1>}
-                {logIncome ? '' : <button onClick={() => {setLogIncome(true)}} class="ui primary button">
-                    Log Income
+
+    function theWageView(select) {
+        if(select === 'm'){
+            setMonthView(true)
+            setWeekView(false)
+            setYearView(false)
+        } else if(select === 'w'){
+            setWeekView(true)
+            setMonthView(false)
+            setYearView(false)
+        } else if(select === 'y'){
+            setYearView(true)
+            setWeekView(false)
+            setMonthView(false)
+        }
+        setViewBy(select)
+    }
+
+    function getDate() {
+        const date = new Date();  // 2009-11-10
+        const month = date.toLocaleString('default', { month: 'long' });
+        setMonth(month)
+    }
+    if (viewIncome !== true) {
+        if (wageFormView !== true) {
+            return (
+                <>
+                    {logIncome ? <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => { setLogIncome(false) }} /> : <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={goBack} />}
+                    <br />
+                    {logIncome ? '' :
+                        <h1 style={{ color: 'white' }}>Just finished work?</h1>}
+                    {logIncome ? '' : <button onClick={() => { setLogIncome(true) }} class="ui primary button">
+                        Log Income
                 </button>} <br /><br />
-                {logIncome ? <h1 style={{color: 'white'}}>Choose a date</h1> : ''}
-                {logIncome ? <Calendar
-                    onChange={onChange}
-                    value={value}
-                /> : ''}<br />
-                {logIncome ? <button onClick={() => {setWageFormView(true)}} class="ui button">
-                    Enter
+                    {logIncome ? <h1 style={{ color: 'white' }}>Choose a date</h1> : ''}
+                    {logIncome ? <Calendar
+                        onChange={onChange}
+                        value={value}
+                    /> : ''}<br />
+                    {logIncome ? <button onClick={() => { setWageFormView(true) }} class="ui button">
+                        Enter
                 </button> : ''}
-                {logIncome ? '' : <h1 style={{color: 'white'}}>How much have you earned?</h1>}
-                {logIncome ? '' : <button onClick={() => {setViewIncome(true)}} class="ui primary button">
-                    View Income
+                    {logIncome ? '' : <h1 style={{ color: 'white' }}>How much have you earned?</h1>}
+                    {logIncome ? '' : <button onClick={() => { setViewIncome(true) }} class="ui primary button">
+                        View Income
                 </button>}
-            </>
-        )
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => { setWageFormView(false) }} />
+                    <WageForm wageFormSubmit={wageFormSubmit} />
+                </>
+            )
+        }
     } else {
         return (
             <>
-            <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => {setWageFormView(false)}} />
-            <WageForm wageFormSubmit={wageFormSubmit}/>
+                <Header goBack={() => { setViewIncome(false) }} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
+                <WageDetail month={month} wageData={wageData} theWageView={theWageView} weekView={weekView} monthView={monthView} yearView={yearView} />
             </>
         )
-    }
-} else {
-    return (
-        <>
-        <Header goBack={() => {setViewIncome(false)}} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
-        <WageDetail wageData={wageData} />
-        </>
-    )
 
-}
+    }
 
 }
 

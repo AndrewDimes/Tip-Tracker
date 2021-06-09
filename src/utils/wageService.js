@@ -20,13 +20,15 @@ function createWage(body,id){
     // Parameter destructuring!
     .then(({ token }) => tokenService.setToken(token));
 }
-function getWages(id){
-  console.log('in wage service')
-  return fetch(BASE_URL + 'getWages/' + id, {
+function getWages(id, viewBy){
+  console.log(viewBy, 'in wage service')
+  return fetch(BASE_URL + 'getWages/' + id + '/' + viewBy, {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + tokenService.getToken()
     }
+    
+    
   })
     .then(res => res.json());
 }
