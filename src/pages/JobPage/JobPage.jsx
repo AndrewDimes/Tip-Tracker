@@ -18,6 +18,9 @@ const JobPage = ({ handleLogOut }) => {
     const [wageData, setWageData] = useState({})
     const [viewBy, setViewBy] = useState('m')
     const [month, setMonth] = useState('')
+    const [year, setYear] = useState('')
+    const [monday, setMonday] = useState('')
+    const [sunday, setSunday] = useState('')
     const [weekView, setWeekView] = useState(false)
     const [monthView, setMonthView] = useState(false)
     const [yearView, setYearView] = useState(false)
@@ -102,7 +105,42 @@ const JobPage = ({ handleLogOut }) => {
     function getDate() {
         const date = new Date();  // 2009-11-10
         const month = date.toLocaleString('default', { month: 'long' });
+        const year = date.toLocaleString('default', { year: 'numeric' });
+        setYear(year)
         setMonth(month)
+        function setToMonday( date ) {
+            let day = date.getDay() || 7;  
+            if(day !== 1){
+                date.setHours(-24 * (day - 1));
+            }
+                 
+            return date;
+        }
+        function setToSunday( date ){
+            let day = date.getDay() || 7;
+            if(day !== 7){
+                date.setHours(24 * (day + 1))
+            }
+            return date;
+        }
+        let mondayRaw = setToMonday(new Date())
+        let sundayRaw = setToSunday(new Date())
+        function getFormattedDate(date) {
+            var year = date.getFullYear();
+          
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+          
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            
+            return month + '/' + day + '/' + year;
+          }
+        let mondayFormatted = getFormattedDate(mondayRaw)
+        let sundayFormatted = getFormattedDate(sundayRaw)
+        setMonday(mondayFormatted)
+        setSunday(sundayFormatted)
+
     }
     if (viewIncome !== true) {
         if (wageFormView !== true) {
@@ -141,7 +179,7 @@ const JobPage = ({ handleLogOut }) => {
         return (
             <>
                 <Header goBack={() => { setViewIncome(false) }} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
-                <WageDetail month={month} wageData={wageData} theWageView={theWageView} weekView={weekView} monthView={monthView} yearView={yearView} />
+                <WageDetail monday={monday} sunday={sunday} year={year} month={month} wageData={wageData} theWageView={theWageView} weekView={weekView} monthView={monthView} yearView={yearView} />
             </>
         )
 
