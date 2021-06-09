@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WageDetail = () => {
+const WageDetail = ({wageData}) => {
     return (
         <div>
             <div class="three ui buttons">
@@ -12,25 +12,25 @@ const WageDetail = () => {
             <div class="ui middle aligned divided list">
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> 0.00 </div>
+                    <div style={{color:'white'}}> {wageData.totalIncome} </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} >Total Income </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> 0.00 </div>
+                    <div style={{color:'white'}}> {wageData.totalWages} </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}}> From Wage </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> 0.00 </div>
+                    <div style={{color:'white'}}> {wageData.totalTips} </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} > From Tips </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> 0.00 </div>
+                    <div style={{color:'white'}}> {wageData.totalHours} </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} >Hours Worked </div>
                 </div>
