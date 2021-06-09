@@ -27,6 +27,7 @@ module.exports = {
   async function getWages(req, res){
     const job = await Job.findById(req.params.id)
     const user = await User.findOne({ _id: req.user._id });
+    console.log(req.params.viewBy,'in controller')
     let totalTips = 0
     let totalWages = 0
     let totalHours = 0
