@@ -15,6 +15,7 @@ const JobPage = ({handleLogOut}) => {
     const [logIncome, setLogIncome] = useState(false)
     const [wageFormView, setWageFormView] = useState(false)
     const [viewIncome, setViewIncome] = useState(false)
+    const [wageData, setWageData] = useState({})
 
 
 
@@ -30,8 +31,19 @@ const JobPage = ({handleLogOut}) => {
         }
     }
 
+    async function getWages(){
+        try {
+            const data = await wageService.getWages(window.location.pathname.substring(1))
+            console.log(data)
+            setWageData(data)
+        } catch(err) {
+            setError(err.message)
+        }
+    }
+
     useEffect(() => {
         getJob()
+        getWages()
     }, [jobSwitch])
   
 
@@ -99,7 +111,7 @@ if(viewIncome !== true){
     return (
         <>
         <Header goBack={() => {setViewIncome(false)}} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
-        <WageDetail />
+        <WageDetail wageData={wageData} />
         </>
     )
 
