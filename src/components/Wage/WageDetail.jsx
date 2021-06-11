@@ -15,25 +15,25 @@ const WageDetail = ({wageData, theWageView, month, weekView, monthView, yearView
             <div class="ui middle aligned divided list">
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.totalIncome} </div>
+                    <div style={{color:'white'}}> {wageData.totalIncome}.00 </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} >Total Income </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.totalWages} </div>
+                    <div style={{color:'white'}}> {wageData.totalWages}.00 </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}}> From Wage </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.totalTips} </div>
+                    <div style={{color:'white'}}> {wageData.totalTips}.00 </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} > From Tips </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.totalHours} </div>
+                    <div style={{color:'white'}}> {wageData.totalHours}.00 </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} >Hours Worked </div>
                 </div>
