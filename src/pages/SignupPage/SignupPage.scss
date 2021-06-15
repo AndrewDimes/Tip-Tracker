@@ -58,18 +58,6 @@
       }
       button {
         width: 90%;
-        padding: 1rem 0rem;
-        font-size: 1.5rem;
-        border: none;
-        color: $main-text-color;
-        cursor: pointer;
-        border-radius: 30px;
-        transition: 0.3s ease;
-        background-color: $neon-02-2-hex;
-        &:hover {
-          background-color: white;
-          color: $main-text-color;
-        }
       }
     }
     small {
