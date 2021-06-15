@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import { useHistory } from 'react-router-dom';
-import jobService from '../../utils/jobService'
-import wageService from '../../utils/wageService'
+import jobService from '../../utils/jobService';
+import wageService from '../../utils/wageService';
 import WageForm from '../../components/Wage/WageForm';
 import WageDetail from '../../components/Wage/WageDetail';
-import Calendar from 'react-calendar'
+import Calendar from 'react-calendar';
+import Btn from '../../components/Buttons/Btn';
+import './JobPage.scss';
 
 const JobPage = ({ handleLogOut }) => {
     const [error, setError] = useState('')
@@ -26,20 +28,21 @@ const JobPage = ({ handleLogOut }) => {
     const [yearView, setYearView] = useState(false)
 
 
-
-    async function getJob() {
-        try {
-            const data = await jobService.getJob(window.location.pathname.substring(1));
-            setJob(data)
-            setJobSwitch(true)
-            // Route to wherever you want!
-        } catch (err) {
-            // Invalid user data (probably duplicate email)
-            setError(err.message)
-        }
+  async function getJob() {
+    try {
+      const data = await jobService.getJob(
+        window.location.pathname.substring(1)
+      );
+      setJob(data);
+      setJobSwitch(true);
+      // Route to wherever you want!
+    } catch (err) {
+      // Invalid user data (probably duplicate email)
+      setError(err.message);
     }
-
-    async function getWages() {
+  }
+  
+      async function getWages() {
         try {
             const data = await wageService.getWages(window.location.pathname.substring(1), viewBy)
             console.log(data)
@@ -48,8 +51,7 @@ const JobPage = ({ handleLogOut }) => {
             setError(err.message)
         }
     }
-
-    useEffect(() => {
+      useEffect(() => {
         getJob()
     }, [jobSwitch])
     useEffect(() => {
@@ -142,40 +144,90 @@ const JobPage = ({ handleLogOut }) => {
         setSunday(sundayFormatted)
 
     }
-    if (viewIncome !== true) {
-        if (wageFormView !== true) {
-            return (
-                <>
-                    {logIncome ? <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => { setLogIncome(false) }} /> : <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={goBack} />}
-                    <br />
-                    {logIncome ? '' :
-                        <h1 style={{ color: 'white' }}>Just finished work?</h1>}
-                    {logIncome ? '' : <button onClick={() => { setLogIncome(true) }} class="ui primary button">
-                        Log Income
-                </button>} <br /><br />
-                    {logIncome ? <h1 style={{ color: 'white' }}>Choose a date</h1> : ''}
-                    {logIncome ? <Calendar
-                        onChange={onChange}
-                        value={value}
-                    /> : ''}<br />
-                    {logIncome ? <button onClick={() => { setWageFormView(true) }} class="ui button">
-                        Enter
-                </button> : ''}
-                    {logIncome ? '' : <h1 style={{ color: 'white' }}>How much have you earned?</h1>}
-                    {logIncome ? '' : <button onClick={() => { setViewIncome(true) }} class="ui primary button">
-                        View Income
-                </button>}
-                </>
-            )
-        } else {
-            return (
-                <>
-                    <Header handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} goBack={() => { setWageFormView(false) }} />
-                    <WageForm wageFormSubmit={wageFormSubmit} />
-                </>
-            )
-        }
-    } else {
+
+
+
+if (viewIncome !== true) {
+  if (wageFormView !== true) {
+    return (
+      <>
+        {logIncome ? (
+          <Header
+            handleLogOut={handleLogOut}
+            job={job}
+            jobSwitch={jobSwitch}
+            jobPage={true}
+            goBack={() => {
+              setLogIncome(false);
+            }}
+          />
+        ) : (
+          <Header
+            handleLogOut={handleLogOut}
+            job={job}
+            jobSwitch={jobSwitch}
+            jobPage={true}
+            goBack={goBack}
+          />
+        )}
+        <div className="job-page__item-container">
+          <div className="job-page__item">
+            {logIncome ? (
+              ''
+            ) : (
+              <h1 className="job-page__header">Just finished work?</h1>
+            )}
+            {logIncome ? (
+              ''
+            ) : (
+              <Btn
+                label="Log Income"
+                onClick={() => {
+                  setLogIncome(true);
+                }}
+              />
+            )}
+          </div>
+          <div className="job-page__item">
+            {logIncome ? <Calendar onChange={onChange} value={value} /> : ''}
+            <br />
+            {logIncome ? (
+              <Btn
+                onClick={() => {
+                  setWageFormView(true);
+                }}
+                label="Enter"
+              />
+            ) : (
+              ''
+            )}
+            {logIncome ? (
+              ''
+            ) : (
+              <h1 className="job-page__header">How much have you earned?</h1>
+            )}
+            {logIncome ? '' : <Btn onClick={() => { setViewIncome(true) }} label="View Income" />}
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Header
+          handleLogOut={handleLogOut}
+          job={job}
+          jobSwitch={jobSwitch}
+          jobPage={true}
+          goBack={() => {
+            setWageFormView(false);
+          }}
+        />
+        <WageForm wageFormSubmit={wageFormSubmit} />
+      </>
+    );
+   } else {
+      
         return (
             <>
                 <Header goBack={() => { setViewIncome(false) }} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
@@ -183,8 +235,8 @@ const JobPage = ({ handleLogOut }) => {
             </>
         )
 
-    }
+    }  
+};
 
-}
-
-export default JobPage
+      
+export default JobPage;

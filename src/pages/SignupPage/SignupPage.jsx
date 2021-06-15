@@ -4,6 +4,7 @@ import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
 import './SignupPage.scss';
 import Logo from '../../img/money-tree9.png';
+import Btn from '../../components/Buttons/Btn';
 
 import { gsap } from 'gsap';
 
@@ -93,9 +94,13 @@ export default function SignUpPage(props) {
               onChange={handleChange}
               required
             />
-            <button type="submit" className="btn" disabled={invalidForm}>
-              Sign up
-            </button>
+            <Btn
+              className="btn"
+              type="submit"
+              label="Sign up"
+              disabled={invalidForm}
+            />
+
             {error ? <ErrorMessage error={error} /> : null}
             <small>
               Already have an account?{' '}
