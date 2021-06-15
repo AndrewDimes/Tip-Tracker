@@ -21,6 +21,7 @@ const Header = ({
             Log Out
           </button>
           <span className="header-span">
+
             {jobSwitch ? job.job.companyName : ''}
           </span>
           <button onClick={goBack} class="header__button">
