@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './JobForm.scss';
 import JobFormSplash from '../../svg/undraw_make_it_rain_iwk4.svg';
+import Btn from '../Buttons/Btn';
 import AddNotes from '../../svg/undraw_Add_notes_re_ln36.svg';
 import jobService from '../../utils/jobService';
 import { useHistory } from 'react-router-dom';
@@ -41,12 +42,7 @@ const JobForm = ({ handleSubmit }) => {
             type="text"
           ></input>
         </div>
-        <button
-          onClick={() => handleSubmit(state)}
-          className="job-form__button"
-        >
-          Submit
-        </button>
+        <Btn onClick={() => handleSubmit(state)} label="Submit" />
       </div>
     </div>
   );

@@ -1,0 +1,19 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.job-page__header {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-weight: 100;
+}
+
+.job-page__item-container {
+  @include flex(column, center);
+}
+
+.job-page__item {
+  width: 40%;
+  @include flex(column, center);
+  margin-top: 2rem;
+}

@@ -5,6 +5,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: #141414;
+  background-color: #141414;
+  background: url('./img/Sun-Tornado\(1\).svg');
+  background-size: cover;
 }
