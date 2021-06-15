@@ -43,21 +43,8 @@
       }
     }
   }
-  .job-form__button {
-    width: 500px;
-    padding: 1rem 0rem;
-    margin-top: 2rem;
-    font-size: 1.5rem;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 30px;
-    transition: 0.3s ease;
-    background-color: $neon-02-2-hex;
-    letter-spacing: 0.1rem;
-    &:hover {
-      background-color: white;
-      color: $main-text-color;
-    }
+  button {
+    width: 100%;
+    margin-top: 1rem;
   }
 }

@@ -15,29 +15,19 @@ const Header = ({
 }) => {
   if (jobPage) {
     return (
-      <div class="ui segment">
-        <h3 class="ui center aligned header">
-          <span
-            onClick={handleLogOut}
-            class="ui button"
-            style={{ marginRight: '0%' }}
-          >
-            {' '}
-            Log Out{' '}
-          </span>
-          <span style={{ marginLeft: '10%' }}>
+      <section class="header">
+        <h3 className="header-container">
+          <button onClick={handleLogOut} class="header__button">
+            Log Out
+          </button>
+          <span className="header-span">
             {jobSwitch ? job.job.companyName : ''}
           </span>
-          <span
-            onClick={goBack}
-            class="ui button"
-            style={{ marginLeft: '10%' }}
-          >
-            {' '}
-            Back{' '}
-          </span>
+          <button onClick={goBack} class="header__button">
+            <BsBackspace className="icon" />
+          </button>
         </h3>
-      </div>
+      </section>
     );
   } else {
     return (
@@ -46,11 +36,12 @@ const Header = ({
           <button onClick={handleLogOut} class="header__button">
             <BiLogOut className="icon" />
           </button>
-          <span>{jobForm ? 'Add a job' : 'Select a job'}</span>
+          <span className="header-span">
+            {jobForm ? 'Add a job' : 'Select a job'}
+          </span>
           {jobForm ? (
             <button onClick={goBack} class="header__button">
-              {' '}
-              <BsBackspace className="icon" />{' '}
+              <BsBackspace className="icon" />
             </button>
           ) : (
             <button onClick={addJob} class="header__button">

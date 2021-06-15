@@ -4,15 +4,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Logo from '../../img/money-tree9.png';
 import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment,
-} from 'semantic-ui-react';
+import Btn from '../../components/Buttons/Btn';
 
 export default function LoginPage(props) {
   const [invalidForm, setValidForm] = useState(false);
@@ -70,9 +62,10 @@ export default function LoginPage(props) {
             onChange={handleChange}
             required
           />
-          <button type="submit" className="btn" disabled={invalidForm}>
+          <Btn type="submit" label="Login" disabled={invalidForm} />
+          {/* <button type="submit" className="btn" disabled={invalidForm}>
             Login
-          </button>
+          </button> */}
         </form>
         {error ? <ErrorMessage error={error} /> : null}
         <small>
