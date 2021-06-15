@@ -180,24 +180,24 @@ const JobPage = ({ handleLogOut }) => {
                             {logIncome ? (
                                 ''
                             ) : (
+                                <span onClick={() => {
+                                    setLogIncome(true);
+                                }}>
                                 <Btn
                                     label="Log Income"
-                                    onClick={() => {
-                                        setLogIncome(true);
-                                    }}
                                 />
+                                </span>
                             )}
                         </div>
                         <div className="job-page__item">
                             {logIncome ? <Calendar onChange={onChange} value={value} /> : ''}
                             <br />
                             {logIncome ? (
-                                <Btn
-                                    onClick={() => {
-                                        setWageFormView(true);
-                                    }}
-                                    label="Enter"
-                                />
+                                <span onClick={() => {setWageFormView(true)}}>
+                                    <Btn
+                                        label="Enter"
+                                    />
+                                </span>
                             ) : (
                                 ''
                             )}
@@ -206,7 +206,7 @@ const JobPage = ({ handleLogOut }) => {
                             ) : (
                                 <h1 className="job-page__header">How much have you earned?</h1>
                             )}
-                            {logIncome ? '' : <Btn onClick={() => {console.log('test')}} label="View Income" />}
+                            {logIncome ? '' : <span onClick={() => { setViewIncome(true) }}><Btn label="View Income" /></span>}
                         </div>
                     </div>
                 </>
@@ -227,16 +227,16 @@ const JobPage = ({ handleLogOut }) => {
                 </>
             );
         }
-     } else {
+    } else {
 
-            return (
-                <>
-                    <Header goBack={() => { setViewIncome(false) }} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
-                    <WageDetail monday={monday} sunday={sunday} year={year} month={month} wageData={wageData} theWageView={theWageView} weekView={weekView} monthView={monthView} yearView={yearView} />
-                </>
-            )
-        }
+        return (
+            <>
+                <Header goBack={() => { setViewIncome(false) }} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
+                <WageDetail monday={monday} sunday={sunday} year={year} month={month} wageData={wageData} theWageView={theWageView} weekView={weekView} monthView={monthView} yearView={yearView} />
+            </>
+        )
     }
+}
 
 
 export default JobPage;
