@@ -3,7 +3,7 @@ import tokenService from './tokenService';
 const BASE_URL = '/api/wages/';
 
 function createWage(body,id){
-  console.log('in wage service')
+  
   return fetch(BASE_URL + 'createWage/' + id, {
     method: 'POST',
     headers: {
@@ -20,9 +20,22 @@ function createWage(body,id){
     // Parameter destructuring!
     .then(({ token }) => tokenService.setToken(token));
 }
+function getWages(id, viewBy){
+  console.log(viewBy, 'in wage service')
+  return fetch(BASE_URL + 'getWages/' + id + '/' + viewBy, {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+    
+    
+  })
+    .then(res => res.json());
+}
 
 
 export default {
-  createWage
+  createWage,
+  getWages
   
   };
