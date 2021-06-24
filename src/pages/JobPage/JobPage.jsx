@@ -121,7 +121,7 @@ const JobPage = ({ handleLogOut }) => {
         function setToSunday(date) {
             let day = date.getDay() || 7;
             if (day !== 7) {
-                date.setHours(24 * (day + 1))
+                date.setHours(24 * (day - 1))
             }
             return date;
         }
