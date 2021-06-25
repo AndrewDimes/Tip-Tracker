@@ -5,6 +5,7 @@ import jobService from '../../utils/jobService';
 import wageService from '../../utils/wageService';
 import WageForm from '../../components/Wage/WageForm';
 import WageDetail from '../../components/Wage/WageDetail';
+import WageChart from '../../components/Wage/WageChart';
 import Calendar from 'react-calendar';
 import Btn from '../../components/Buttons/Btn';
 import './JobPage.scss';
@@ -233,6 +234,7 @@ const JobPage = ({ handleLogOut }) => {
         return (
             <>
                 <Header goBack={() => { setViewIncome(false) }} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
+                <WageChart />
                 <WageDetail monday={monday} sunday={sunday} year={year} month={month} wageData={wageData} theWageView={theWageView} weekView={weekView} monthView={monthView} yearView={yearView} />
             </>
         )
