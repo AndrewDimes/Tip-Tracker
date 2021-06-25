@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 
 const WageDetail = ({wageData, theWageView, month, weekView, monthView, yearView, year, monday, sunday}) => {
+    if(monthView === false && weekView === false && yearView === false){
+        monthView = true
+    }
     return (
         <div>
             <div class="three ui buttons">
