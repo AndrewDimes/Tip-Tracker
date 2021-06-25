@@ -47,6 +47,7 @@ const JobPage = ({ handleLogOut }) => {
             const data = await wageService.getWages(window.location.pathname.substring(1), viewBy)
             console.log(data)
             setWageData(data)
+            console.log(wageData.mondayAvg, 'hereee')
         } catch (err) {
             setError(err.message)
         }
