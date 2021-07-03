@@ -26,6 +26,7 @@ module.exports = {
 
   async function getWages(req, res){
     const date = new Date();  // 2009-11-10
+    console.log(date.toLocaleString('default', {month: 'long'}),'datehere')
     const month = date.toLocaleString('default', { month: 'long' });
     const year = date.toLocaleString('default', { year: 'numeric' });
     function setToMonday(date) {
@@ -49,6 +50,7 @@ module.exports = {
     monday.setHours(00,00,00,00)
     const job = await Job.findById(req.params.id)
     const user = await User.findOne({ _id: req.user._id });
+    let wages = []
     let totalTips = 0
     let totalWages = 0
     let totalHours = 0
@@ -78,7 +80,7 @@ module.exports = {
     if(req.params.viewBy === 'w'){
       for(let i=0; i<job.wages.length;i++){
         if(job.wages[i].date <= sunday && job.wages[i].date >= monday){
-          console.log(job.wages[i].date.getDay())
+          wages.push(job.wages[i]) 
           totalTips += job.wages[i].tips
           totalWages += job.wages[i].wage
           totalHours += job.wages[i].hours
@@ -117,7 +119,8 @@ module.exports = {
       sundayAvg = sundayTotal / sundayHours
     } else if(req.params.viewBy === 'm'){
       for(let i=0; i<job.wages.length;i++){
-        if(job.wages[i].date.toLocaleString('default', {month: 'long'}) === 'June'){
+        if(job.wages[i].date.toLocaleString('default', {month: 'long'}) === date.toLocaleString('default', {month: 'long'})){
+          wages.push(job.wages[i]) 
           totalTips += job.wages[i].tips
           totalWages += job.wages[i].wage
           totalHours += job.wages[i].hours
@@ -156,7 +159,8 @@ module.exports = {
       sundayAvg = sundayTotal / sundayHours
     } else if(req.params.viewBy === 'y'){
       for(let i=0; i<job.wages.length;i++){
-        if(job.wages[i].date.toLocaleString('default', {year: 'numeric'}) === '2021'){
+        if(job.wages[i].date.toLocaleString('default', {year: 'numeric'}) === date.toLocaleString('default', {year: 'numeric'})){
+          wages.push(job.wages[i]) 
           totalTips += job.wages[i].tips
           totalWages += job.wages[i].wage
           totalHours += job.wages[i].hours
@@ -194,11 +198,10 @@ module.exports = {
       saturdayAvg = saturdayTotal / saturdayHours
       sundayAvg = sundayTotal / sundayHours
     }
-    console.log(mondayAvg)
     try {
       const jobs = await Job.find({user:req.user})
       res.status(200).json({ totalTips, totalWages, totalHours, totalIncome, averageIncome, 
-        mondayAvg, tuesdayAvg, wednesdayAvg, thursdayAvg, fridayAvg, saturdayAvg, sundayAvg  })
+        mondayAvg, tuesdayAvg, wednesdayAvg, thursdayAvg, fridayAvg, saturdayAvg, sundayAvg, wages  })
     } catch (err) {
       res.json(err)
     }

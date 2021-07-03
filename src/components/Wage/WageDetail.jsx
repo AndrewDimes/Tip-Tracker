@@ -18,25 +18,25 @@ const WageDetail = ({wageData, theWageView, month, weekView, monthView, yearView
             <div class="ui middle aligned divided list">
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.totalIncome}.00 </div>
+                    <div style={{color:'white'}}> {wageData.totalIncome.toFixed(2)} </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} >Total Income </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.totalWages}.00 </div>
+                    <div style={{color:'white'}}> {wageData.totalWages.toFixed(2)} </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}}> From Wage </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.totalTips}.00 </div>
+                    <div style={{color:'white'}}> {wageData.totalTips.toFixed(2)}</div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} > From Tips </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.totalHours}.00 </div>
+                    <div style={{color:'white'}}> {wageData.totalHours.toFixed(2)} </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} >Hours Worked </div>
                 </div>
@@ -51,43 +51,43 @@ const WageDetail = ({wageData, theWageView, month, weekView, monthView, yearView
             <div class="ui middle aligned divided list">
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.mondayAvg ? wageData.mondayAvg.toFixed(2) : '0.00' } </div>
+                    <div style={{color:'white'}}> {wageData.mondayAvg ? wageData.mondayAvg.toFixed(2) + '/hr' : '0.00/hr' } </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} >Mondays </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.tuesdayAvg ? wageData.tuesdayAvg.toFixed(2) : '0.00' } </div>
+                    <div style={{color:'white'}}> {wageData.tuesdayAvg ? wageData.tuesdayAvg.toFixed(2) + '/hr' : '0.00/hr' } </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}}> Tuesdays </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.wednesdayAvg ? wageData.wednesdayAvg.toFixed(2) : '0.00' } </div>
+                    <div style={{color:'white'}}> {wageData.wednesdayAvg ? wageData.wednesdayAvg.toFixed(2) + '/hr' : '0.00/hr' } </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} > Wednesdays </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.thursdayAvg ? wageData.thursdayAvg.toFixed(2) : '0.00' } </div>
+                    <div style={{color:'white'}}> {wageData.thursdayAvg ? wageData.thursdayAvg.toFixed(2) + '/hr' : '0.00/hr' } </div>
                     </div>
                     <div class="left floated content" style={{color:'white'}} >Thursdays</div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.fridayAvg ? wageData.fridayAvg.toFixed(2) : '0.00' }</div>
+                    <div style={{color:'white'}}> {wageData.fridayAvg ? wageData.fridayAvg.toFixed(2) + '/hr' : '0.00/hr' }</div>
                     </div>
                     <div class="left floated content" style={{color:'white'}}> Fridays </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.saturdayAvg ? wageData.saturdayAvg.toFixed(2) : '0.00' }</div>
+                    <div style={{color:'white'}}> {wageData.saturdayAvg ? wageData.saturdayAvg.toFixed(2) + '/hr' : '0.00/hr' }</div>
                     </div>
                     <div class="left floated content" style={{color:'white'}}> Saturdays </div>
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {wageData.sundayAvg ? wageData.sundayAvg.toFixed(2) : '0.00' }</div>
+                    <div style={{color:'white'}}> {wageData.sundayAvg ? wageData.sundayAvg.toFixed(2) + '/hr' : '0.00/hr' }</div>
                     </div>
                     <div class="left floated content" style={{color:'white'}}> Sundays </div>
                 </div>
