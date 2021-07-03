@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Header from '../../components/Header/Header';
 import { useHistory } from 'react-router-dom';
 import jobService from '../../utils/jobService';
@@ -28,6 +29,7 @@ const JobPage = ({ handleLogOut }) => {
     const [weekView, setWeekView] = useState(false)
     const [monthView, setMonthView] = useState(false)
     const [yearView, setYearView] = useState(false)
+    const [data, setData] = useState([])
 
 
     async function getJob() {
@@ -47,9 +49,16 @@ const JobPage = ({ handleLogOut }) => {
     async function getWages() {
         try {
             const data = await wageService.getWages(window.location.pathname.substring(1), viewBy)
-            console.log(data)
             setWageData(data)
-            console.log(wageData.mondayAvg, 'hereee')
+            const wage = wageData.wages.map((wage, index) => 
+                ({
+                    name: wage.date.toLocaleString('default', {month: 'long'}),
+                    wage: wage.wage * wage.hours,
+                    tips: wage.tips,
+                    total: wage.tips + wage.wage * wage.hours
+                })
+            )
+            setData(wage)
         } catch (err) {
             setError(err.message)
         }
@@ -235,7 +244,7 @@ const JobPage = ({ handleLogOut }) => {
         return (
             <>
                 <Header goBack={() => { setViewIncome(false) }} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
-                {/* <WageChart data={[20,33,44,21,22,70,10]} /> */}
+                <WageChart data={data} />
                 <WageDetail monday={monday} sunday={sunday} year={year} month={month} wageData={wageData} theWageView={theWageView} weekView={weekView} monthView={monthView} yearView={yearView} />
             </>
         )
