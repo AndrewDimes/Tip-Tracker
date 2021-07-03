@@ -14,6 +14,7 @@
     width: 50vw;
     height: 100vh;
     @include flex(column, center);
+
     .signup-page__top-logo {
       position: absolute;
       top: 1vh;
@@ -34,9 +35,10 @@
     }
 
     h1 {
-      font-size: 2.1rem;
+      font-size: 4rem;
       font-family: $main-font;
       color: $neon-02-2-hex;
+      letter-spacing: 0.1rem;
     }
     form {
       @include flex(column, center);
@@ -58,6 +60,7 @@
       }
       button {
         width: 90%;
+        letter-spacing: 0.1rem;
       }
     }
     small {
@@ -79,27 +82,52 @@
     width: 50vw;
     height: 100vh;
     background-color: $neon-02-2-hex;
-
     background-attachment: fixed;
-    background-size: cover;
+    overflow: hidden;
     @include flex(column, center);
-    h1 {
-      color: white;
-      width: 50%;
-      font-size: 3rem;
-      letter-spacing: 0.1rem;
+    z-index: -3;
+
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -2;
+      background-size: cover;
+      height: 2750px;
+      overflow: hidden;
     }
-    p {
-      margin-top: 3rem;
-      color: white;
-      width: 50%;
-      line-height: 2rem;
-      font-size: 1.3rem;
-      letter-spacing: 0.1rem;
-      span {
-        font-family: $logo-font;
+    .signup-page__gradient {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -1;
+      background: linear-gradient(to bottom left, black, rgba(0, 0, 0, 0));
+      height: 100%;
+      width: 100%;
+    }
+    .signup-page__right-info {
+      @include flex(column, center);
+      width: 60%;
+      padding: 4rem 0rem;
+      h1 {
+        color: white;
+        width: 50%;
+        font-size: 3rem;
+        letter-spacing: 0.1rem;
+      }
+      p {
+        margin-top: 3rem;
+        color: white;
+        width: 50%;
+        line-height: 2rem;
+        font-size: 1.3rem;
+        letter-spacing: 0.1rem;
+        span {
+          font-family: $logo-font;
+        }
       }
     }
+
     .signup-page__right-img1 {
       background-image: url(https://images.pexels.com/photos/6205769/pexels-photo-6205769.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
       background-position: center 70%;

@@ -6,10 +6,12 @@
   height: 10vh;
   @include flex(row, center);
   margin-bottom: 3rem;
+  position: absolute;
+  top: 0;
 
   .header-span {
     color: white;
-    font-size: 2rem;
+    font-size: 1.3rem;
     letter-spacing: 0.1rem;
     font-family: $main-font;
   }
@@ -21,7 +23,7 @@
 
   .header__button {
     padding: 0.5rem 0rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
     border: none;
     color: white;
     cursor: pointer;
@@ -32,7 +34,7 @@
       color: $neon-02-2-hex;
     }
     .icon {
-      font-size: 2.3rem;
+      font-size: 2rem;
     }
   }
 }
