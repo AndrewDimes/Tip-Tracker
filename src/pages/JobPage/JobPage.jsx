@@ -50,25 +50,31 @@ const JobPage = ({ handleLogOut }) => {
     try {
       const data = await wageService.getWages(window.location.pathname.substring(1), viewBy)
       setWageData(data)
-      const wage = wageData.wages.map((wage, index) =>
-      ({
-        name: wage.date.toLocaleString('default', { month: 'long' }),
-        wage: wage.wage * wage.hours,
-        tips: wage.tips,
-        total: wage.tips + wage.wage * wage.hours
-      })
-      )
-      setData(wage)
     } catch (err) {
       setError(err.message)
     }
+  }
+
+  async function getGraphData(){
+    const wage = wageData.wages.map((wage, index) =>
+    ({
+      name: wage.date.toLocaleString('default', { month: 'long' }),
+      wage: wage.wage * wage.hours,
+      tips: wage.tips,
+      total: wage.tips + wage.wage * wage.hours
+    })
+    )
+    setData(wage)
   }
   useEffect(() => {
     getJob()
   }, [jobSwitch])
   useEffect(() => {
-    getDate()
+    getGraphData()
+  }, [wageData])
+  useEffect(() => {
     getWages()
+    getDate()
   }, [viewBy])
 
 
