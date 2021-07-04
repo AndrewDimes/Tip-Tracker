@@ -56,9 +56,22 @@ const JobPage = ({ handleLogOut }) => {
   }
 
   async function getGraphData(){
+  var month=new Array();
+  month[0]="Jan";
+  month[1]="Feb";
+  month[2]="Mar";
+  month[3]="Apr";
+  month[4]="May";
+  month[5]="Jun";
+  month[6]="Jul";
+  month[7]="Aug";
+  month[8]="Sep";
+  month[9]="Oct";
+  month[10]="Nov";
+  month[11]="Dec";
     const wage = wageData.wages.map((wage, index) =>
     ({
-      name: wage.date.toLocaleString('default', { month: 'long' }),
+      name: month[wage.date.slice(6, 7)] + ' ' + wage.date.slice(8,10),
       wage: wage.wage * wage.hours,
       tips: wage.tips,
       total: wage.tips + wage.wage * wage.hours
@@ -70,7 +83,12 @@ const JobPage = ({ handleLogOut }) => {
     getJob()
   }, [jobSwitch])
   useEffect(() => {
-    getGraphData()
+    if(wageData.wages){
+      if(wageData.wages.length > 0){
+        getGraphData()
+      }
+      
+    }
   }, [wageData])
   useEffect(() => {
     getWages()
