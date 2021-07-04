@@ -3,7 +3,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
 import './SignupPage.scss';
-import Logo from '../../img/money-tree9.png';
+
 import Btn from '../../components/Buttons/Btn';
 
 import { gsap } from 'gsap';
@@ -53,11 +53,6 @@ export default function SignUpPage(props) {
     <>
       <section className="signup-page">
         <div className="signup-page__left">
-          <div className="signup-page__top-logo">
-            <img src={Logo} alt="" />
-            <h1>TipTree</h1>
-          </div>
-
           <div className="signup-page__header">
             <h1>Sign Up</h1>
           </div>
@@ -112,21 +107,15 @@ export default function SignUpPage(props) {
           </form>
         </div>
         <div className="signup-page__right">
-          <h1>Track your income and take better control of your finances.</h1>
-          <p>
-            If your primary source of income is tips, financial planning can be
-            challenging. <span>TipTree</span> is a simple, intuitive and free
-            tool for you to track how much money you make to help you improve
-            your financial life
-          </p>
-          <div
-            ref={(el) => (img1 = el)}
-            className="signup-page__right-img1"
-          ></div>
-          <div
-            ref={(el) => (img2 = el)}
-            className="signup-page__right-img2"
-          ></div>
+          <div className="signup-page__right-info">
+            <h1>Track your income and take better control of your finances.</h1>
+            <p>
+              If your primary source of income is tips, financial planning can
+              be challenging. <span>TipTree</span> is a simple, intuitive and
+              free tool for you to track how much money you make to help you
+              improve your financial life
+            </p>
+          </div>
         </div>
       </section>
     </>

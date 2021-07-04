@@ -11,9 +11,10 @@
       height: 100px;
     }
     h1 {
-      font-size: 2.1rem;
+      font-size: 4rem;
       font-family: $main-font;
       color: $neon-02-2-hex;
+      letter-spacing: 0.1rem;
     }
   }
 
@@ -26,7 +27,7 @@
     input {
       width: 90%;
       border: none;
-      border-radius: 30px;
+      border-radius: 10px;
       padding: 1rem;
       margin-bottom: 1rem;
       outline: none;

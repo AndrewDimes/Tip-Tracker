@@ -3,43 +3,38 @@
 
 .job-form {
   @include flex(column, center);
-  height: 70vh;
 
-  img {
-    height: 400px;
-    margin-bottom: 4rem;
-    border-radius: 30px;
-    z-index: -1;
-  }
   .job-form__field-container {
-    border: 1px solid white;
-    border-radius: 30px;
-    padding: 2rem;
+    background-color: $neon-02-23-hex;
+    border-radius: 20px;
+    padding: 5rem;
+    width: 500px;
+    min-width: 400px;
   }
   .job-form__field {
     @include flex(column, center);
     label {
       color: white;
       letter-spacing: 0.1rem;
-      margin-bottom: 2rem;
-      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
     }
     input {
       margin-bottom: 2rem;
-      padding-bottom: 0.5rem;
-      width: 500px;
-      background-color: transparent;
+      padding: 0.5rem;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.938);
       border: none;
-      border-bottom: 1px solid white;
+      border-radius: 5px;
       color: white;
       outline: none;
       font-size: 1.3rem;
       letter-spacing: 0.1rem;
       text-align: center;
-      color: $neon-02-5-hex;
+      color: white;
       &::placeholder {
-        opacity: 0.2;
-        color: white;
+        opacity: 1;
+        color: rgba(177, 177, 177, 0);
       }
     }
   }

@@ -1,19 +1,51 @@
 @import '../../styles/mixin';
 @import '../../styles/variables';
 
-.job-page__header {
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
-  color: white;
-  font-weight: 100;
-}
-
 .job-page__item-container {
-  @include flex(column, center);
-}
+  @include flex(row, space-between);
+  border-radius: 20px;
+  width: 780px;
 
-.job-page__item {
-  width: 40%;
-  @include flex(column, center);
-  margin-top: 2rem;
+  padding: 2rem;
+  .job-page__item {
+    background-color: $neon-02-23-hex;
+    border-radius: 10px;
+    width: 350px;
+    height: 200px;
+    @include flex(column, center);
+    &:hover {
+      outline: 1px solid $neon-02-2-hex;
+    }
+    span {
+      color: $neon-02-2-hex;
+      letter-spacing: 0.1rem;
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: capitalize;
+      cursor: pointer;
+      margin-bottom: 1.6rem;
+
+      letter-spacing: 0.1rem;
+      transition: color 0.3s ease;
+      &:hover {
+        color: $neon-02-22-hex;
+      }
+    }
+    icon {
+      color: white;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      &:hover {
+        color: $neon-02-5-hex;
+      }
+    }
+    .job-page__header {
+      margin-bottom: 1.5rem;
+      color: white;
+      font-weight: 100;
+      font-size: 1.5rem;
+      text-align: left;
+      letter-spacing: 0.05rem;
+    }
+  }
 }

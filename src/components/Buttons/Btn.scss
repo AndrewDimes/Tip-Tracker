@@ -4,14 +4,14 @@
 .Btn {
   padding: 1rem 3rem;
   background-color: transparent;
-  background-color: $background-color;
+  background-color: $neon-02-2-hex;
   border: 1px solid $neon-02-2-hex;
-  border-radius: 30px;
+  border-radius: 10px;
   color: white;
   font-size: 1.3rem;
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-    box-shadow: 5px 25px 40px rgba(0, 0, 0, 0.644);
+    background-color: $neon-02-22-hex;
   }
 }
