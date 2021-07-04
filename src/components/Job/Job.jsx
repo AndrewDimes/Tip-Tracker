@@ -1,7 +1,7 @@
 import React from 'react';
 import './Job.scss';
-import { BiSelectMultiple } from 'react-icons/bi';
-import { BsTrash } from 'react-icons/bs';
+import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
 
 const Job = ({ company, title, deleteJob, id, goToJob }) => {
   return (
@@ -9,15 +9,15 @@ const Job = ({ company, title, deleteJob, id, goToJob }) => {
       <div className="job-item" onClick={() => goToJob(id)}>
         <div className="job-item__icon">
           <div className="job-item__icon-icon" onClick={() => deleteJob(id)}>
-            <BsTrash />
+            <DeleteForeverOutlinedIcon fontSize="medium" />
           </div>
           <div className="job-item__icon-icon" onClick={() => goToJob(id)}>
-            <BiSelectMultiple />
+            <AddOutlinedIcon fontSize="medium" />
           </div>
         </div>
         <div className="job-item__details">
-          <div className="job-item__details-info">{company}</div>
-          <div className="job-item__details-info">{title}</div>
+          <div className="job-item__details-info company">{company}</div>
+          <div className="job-item__details-info job-title">{title}</div>
         </div>
       </div>
     </div>

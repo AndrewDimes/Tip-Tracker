@@ -250,6 +250,4 @@ const JobPage = ({ handleLogOut }) => {
         )
     }
 }
-
-
 export default JobPage;

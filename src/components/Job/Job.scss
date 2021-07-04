@@ -3,45 +3,63 @@
 
 .job {
   @include flex(row, center);
-
   margin-bottom: 0.5rem;
-  height: 10vh;
 
   .job-item {
-    @include flex(row, space-between);
-    width: 25%;
-    height: 5vh;
-    background-color: $background-color;
-    border: 1px solid $neon-02-2-hex;
-    padding: 3rem;
+    @include flex(column, space-around);
+    width: 500px;
+    min-width: 400px;
+    height: 160px;
+    background-color: $neon-02-23-hex;
     border-radius: 20px;
     cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+
     &:hover {
-      box-shadow: 5px 25px 40px rgba(0, 0, 0, 0.644);
+      outline: 1px solid $neon-02-2-hex;
     }
+
     .job-item__icon {
+      position: absolute;
+      right: 5%;
+      top: 5%;
       @include flex(row, space-between);
-      width: 15%;
+      width: 90%;
+      height: 30%;
       cursor: pointer;
       .job-item__icon-icon {
         color: white;
-        font-size: 2rem;
+        height: 20px;
         letter-spacing: 0.1rem;
         transition: 0.2s ease;
         &:hover {
-          color: $main-text-color;
+          color: $neon-02-2-hex;
         }
       }
     }
     .job-item__details {
-      @include flex(row, space-between);
+      @include flex(column, center);
       width: 55%;
+      height: 40%;
+      margin-top: 1.5rem;
 
       .job-item__details-info {
+        margin-bottom: 0.3rem;
+      }
+
+      .company {
         color: white;
-        font-size: 1.5rem;
         letter-spacing: 0.1rem;
-        line-height: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: 900;
+        text-transform: capitalize;
+      }
+      .job-title {
+        color: $neon-02-2-hex;
+        letter-spacing: 0.2rem;
+        font-size: 1rem;
+        text-transform: uppercase;
       }
     }
   }

@@ -22,7 +22,6 @@ const JobForm = ({ handleSubmit }) => {
 
   return (
     <div className="job-form">
-      <img src={JobFormSplash} alt="job-form-img" />
       <div className="job-form__field-container">
         <div className="job-form__field">
           <label>Company Name</label>

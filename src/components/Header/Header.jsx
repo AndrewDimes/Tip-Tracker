@@ -1,8 +1,8 @@
 import React from 'react';
 import './Header.scss';
-import { HiOutlineViewGridAdd } from 'react-icons/hi';
-import { BsBackspace } from 'react-icons/bs';
-import { BiLogOut } from 'react-icons/bi';
+import PlaylistAddOutlinedIcon from '@material-ui/icons/PlaylistAddOutlined';
+import { BsArrowLeft } from 'react-icons/bs';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 const Header = ({
   addJob,
@@ -18,14 +18,13 @@ const Header = ({
       <section class="header">
         <h3 className="header-container">
           <button onClick={handleLogOut} class="header__button">
-            Log Out
+            <ExitToAppOutlinedIcon />
           </button>
           <span className="header-span">
-
             {jobSwitch ? job.job.companyName : ''}
           </span>
           <button onClick={goBack} class="header__button">
-            <BsBackspace className="icon" />
+            <BsArrowLeft className="icon" />
           </button>
         </h3>
       </section>
@@ -35,19 +34,19 @@ const Header = ({
       <section class="header">
         <div className="header-container">
           <button onClick={handleLogOut} class="header__button">
-            <BiLogOut className="icon" />
+            <ExitToAppOutlinedIcon />
           </button>
           <span className="header-span">
             {jobForm ? 'Add a job' : 'Select a job'}
           </span>
           {jobForm ? (
             <button onClick={goBack} class="header__button">
-              <BsBackspace className="icon" />
+              <BsArrowLeft className="icon" />
             </button>
           ) : (
             <button onClick={addJob} class="header__button">
               {' '}
-              <HiOutlineViewGridAdd className="icon" />{' '}
+              <PlaylistAddOutlinedIcon className="icon" />{' '}
             </button>
           )}
         </div>

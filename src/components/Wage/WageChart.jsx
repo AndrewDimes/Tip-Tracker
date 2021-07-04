@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import { HiOutlineRss } from 'react-icons/hi';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+// const WageChart = ({data}) => {
+//     const svgRef = useRef()
 
 
 const WageChart = ({data}) => {
