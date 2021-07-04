@@ -6,7 +6,7 @@ const WageDetail = ({wageData, theWageView, month, weekView, monthView, yearView
     }
     return (
         <div>
-            <div class="three ui buttons">
+            <div style={{marginTop:'15%'}}class="three ui buttons">
                 <button onClick={() => theWageView('w')} class="ui button">Weekly</button>
                 <button onClick={() => theWageView('m')} class="ui button">Monthly</button>
                 <button onClick={() => theWageView('y')} class="ui button">Yearly</button>
