@@ -42,7 +42,7 @@ const WageDetail = ({wageData, theWageView, month, weekView, monthView, yearView
                 </div>
                 <div class="item">
                     <div class="right floated content">
-                    <div style={{color:'white'}}> {' '} {wageData.averageIncome.toFixed(2)}{' '} </div>
+                    <div style={{color:'white'}}> {' '} {wageData.averageIncome ? wageData.averageIncome.toFixed(2) : '' } {' '}</div>
                     </div>
                     <div class="left floated content" style={{color:'white'}}> {' '} Average Income{' '} </div>
                 </div>

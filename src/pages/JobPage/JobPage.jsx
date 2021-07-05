@@ -11,6 +11,7 @@ import Calendar from 'react-calendar';
 import Btn from '../../components/Buttons/Btn';
 import './JobPage.scss';
 import './Calender.scss';
+import { Message } from 'semantic-ui-react';
 
 const JobPage = ({ handleLogOut }) => {
   const [error, setError] = useState('')
@@ -30,6 +31,7 @@ const JobPage = ({ handleLogOut }) => {
   const [monthView, setMonthView] = useState(false)
   const [yearView, setYearView] = useState(false)
   const [data, setData] = useState([])
+  const [submitMsg, setSubmitMsg] = useState(false)
 
 
   async function getJob() {
@@ -56,19 +58,20 @@ const JobPage = ({ handleLogOut }) => {
   }
 
   async function getGraphData(){
-  var month=new Array();
-  month[0]="Jan";
-  month[1]="Feb";
-  month[2]="Mar";
-  month[3]="Apr";
-  month[4]="May";
-  month[5]="Jun";
-  month[6]="Jul";
-  month[7]="Aug";
-  month[8]="Sep";
-  month[9]="Oct";
-  month[10]="Nov";
-  month[11]="Dec";
+  const month=new Array();
+  month[1]="Jan";
+  month[2]="Feb";
+  month[3]="Mar";
+  month[4]="Apr";
+  month[5]="May";
+  month[6]="Jun";
+  month[7]="Jul";
+  month[8]="Aug";
+  month[9]="Sep";
+  month[10]="Oct";
+  month[11]="Nov";
+  month[12]="Dec";
+  console.log(wageData.wages[0].date.slice(6,7))
     const wage = wageData.wages.map((wage, index) =>
     ({
       name: month[wage.date.slice(6, 7)] + ' ' + wage.date.slice(8,10),
@@ -95,7 +98,9 @@ const JobPage = ({ handleLogOut }) => {
     getDate()
   }, [viewBy])
 
-
+  // if(submitMsg){
+  //   setTimeout(() => { setSubmitMsg(false)}, 5000)
+  // }
 
   async function wageFormSubmit(wageInfo) {
     const info = {
@@ -110,6 +115,7 @@ const JobPage = ({ handleLogOut }) => {
       setLogIncome(false)
       setWageFormView(false)
       setJobSwitch(true)
+      setSubmitMsg(true)
 
     } catch (err) {
       // Invalid user data (probably duplicate email)
@@ -146,23 +152,15 @@ const JobPage = ({ handleLogOut }) => {
     const year = date.toLocaleString('default', { year: 'numeric' });
     setYear(year)
     setMonth(month)
-    function setToMonday(date) {
-      let day = date.getDay() || 7;
-      if (day !== 1) {
-        date.setHours(-24 * (day - 1));
-      }
-
-      return date;
+    let curr = new Date
+    let week = []
+    for (let i = 1; i <= 7; i++) {
+      let first = curr.getDate() - curr.getDay() + i
+      let day = new Date(curr.setDate(first))
+      week.push(day)
     }
-    function setToSunday(date) {
-      let day = date.getDay() || 7;
-      if (day !== 7) {
-        date.setHours(24 * (day - 1))
-      }
-      return date;
-    }
-    let mondayRaw = setToMonday(new Date())
-    let sundayRaw = setToSunday(new Date())
+    let mondayRaw = week[0]
+    let sundayRaw = week[6]
     function getFormattedDate(date) {
       let year = date.getFullYear();
 
@@ -180,8 +178,6 @@ const JobPage = ({ handleLogOut }) => {
     setSunday(sundayFormatted)
 
   }
-
-
 
   if (viewIncome !== true) {
     if (wageFormView !== true) {
@@ -206,6 +202,8 @@ const JobPage = ({ handleLogOut }) => {
               goBack={goBack}
             />
           )}
+        <Message>Your form for has been submitted successfully!</Message> 
+          {/* { submitMsg ? <Message>Your form for has been submitted successfully!</Message> : ''} */}
           {logIncome ? '' : <div className="job-page__item-container">
             <div className="job-page__item">
               <h1 className="job-page__header">Just finished work?</h1>
