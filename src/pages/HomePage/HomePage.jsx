@@ -53,7 +53,6 @@ export default function HomePage({ handleLogOut }) {
   };
 
   const goToJob = (id) => {
-    console.log(id);
     history.push(`${id}`);
   };
 

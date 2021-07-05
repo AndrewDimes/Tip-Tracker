@@ -6,7 +6,7 @@ import { BsTrash } from 'react-icons/bs';
 const Job = ({ company, title, deleteJob, id, goToJob }) => {
   return (
     <div className="job">
-      <div className="job-item" onClick={() => goToJob(id)}>
+      <div className="job-item">
         <div className="job-item__icon">
           <div className="job-item__icon-icon" onClick={() => deleteJob(id)}>
             <BsTrash />

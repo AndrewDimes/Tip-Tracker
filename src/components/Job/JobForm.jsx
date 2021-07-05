@@ -42,7 +42,7 @@ const JobForm = ({ handleSubmit }) => {
             type="text"
           ></input>
         </div>
-        <Btn onClick={() => handleSubmit(state)} label="Submit" />
+        <span onClick={() => handleSubmit(state)}><Btn label="Submit" /></span>
       </div>
     </div>
   );

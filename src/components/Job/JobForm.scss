@@ -30,13 +30,12 @@
       width: 500px;
       background-color: transparent;
       border: none;
-      border-bottom: 1px solid white;
-      color: white;
+      border-radius: 5px;
       outline: none;
       font-size: 1.3rem;
       letter-spacing: 0.1rem;
       text-align: center;
-      color: $neon-02-5-hex;
+      color: rgb(0, 0, 0);
       &::placeholder {
         opacity: 0.2;
         color: white;
