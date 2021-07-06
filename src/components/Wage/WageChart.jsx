@@ -10,7 +10,7 @@ const WageChart = ({ data }) => {
       <LineChart
         data={data}
         margin={{
-          top: 50,
+          top: 20,
           right: 50,
           left: 20,
           bottom: 0,

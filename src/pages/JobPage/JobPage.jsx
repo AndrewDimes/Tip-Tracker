@@ -215,7 +215,18 @@ const JobPage = ({ handleLogOut }) => {
             </div>
           </div>}
           {logIncome ? <Calendar onChange={onChange} value={value} /> : ''}
-          {logIncome ? <span onClick={() => { setWageFormView(true) }}><Btn label="Enter" /> </span> : ''}
+          <br />
+          {logIncome ? (
+            <span
+              onClick={() => {
+                setWageFormView(true);
+              }}
+            >
+              <Btn label="Enter" />{' '}
+            </span>
+          ) : (
+            ''
+          )}
         </>
       );
     } else {
@@ -238,9 +249,29 @@ const JobPage = ({ handleLogOut }) => {
 
     return (
       <>
-        <Header goBack={() => { setViewIncome(false) }} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
+        <Header
+          goBack={() => {
+            setViewIncome(false);
+          }}
+          handleLogOut={handleLogOut}
+          job={job}
+          jobSwitch={jobSwitch}
+          jobPage={true}
+        /> 
+        <br></br><br /><br /><br />
         <WageChart data={data} />
-        <WageDetail monday={monday} sunday={sunday} year={year} month={month} wageData={wageData} theWageView={theWageView} weekView={weekView} monthView={monthView} yearView={yearView} />
+        <WageDetail
+          monday={monday}
+          sunday={sunday}
+          year={year}
+          month={month}
+          wageData={wageData}
+          theWageView={theWageView}
+          weekView={weekView}
+          monthView={monthView}
+          yearView={yearView}
+        />
+        <br></br><br /><br />
       </>
     )
   }
