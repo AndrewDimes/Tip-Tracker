@@ -106,8 +106,10 @@ const JobPage = ({ handleLogOut }) => {
     getDate();
   }, [viewBy]);
 
-  if(submitMsg){
-    setTimeout(() => { setSubmitMsg(false)}, 4000)
+  if (submitMsg) {
+    setTimeout(() => {
+      setSubmitMsg(false);
+    }, 4000);
   }
 
   async function wageFormSubmit(wageInfo) {
@@ -206,7 +208,7 @@ const JobPage = ({ handleLogOut }) => {
               goBack={goBack}
             />
           )}
-          {/* <Message>Your form for has been submitted successfully!</Message>  */}
+          {/* <Message>Your form for has been submitted successfully!</Message> */}
           {submitMsg ? (
             <Message>Your form for has been submitted successfully!</Message>
           ) : (
@@ -280,8 +282,11 @@ const JobPage = ({ handleLogOut }) => {
           job={job}
           jobSwitch={jobSwitch}
           jobPage={true}
-        /> 
-        <br></br><br /><br /><br />
+        />
+        <br></br>
+        <br />
+        <br />
+        <br />
         <WageChart data={data} />
         <WageDetail
           monday={monday}
@@ -294,7 +299,9 @@ const JobPage = ({ handleLogOut }) => {
           monthView={monthView}
           yearView={yearView}
         />
-        <br></br><br /><br />
+        <br></br>
+        <br />
+        <br />
       </>
     );
   }

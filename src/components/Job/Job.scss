@@ -6,7 +6,7 @@
   margin-bottom: 1rem;
 
   .job-item {
-    @include flex(column, space-around);
+    @include flex(column, center);
     width: 500px;
     min-width: 400px;
     height: 160px;
@@ -15,32 +15,29 @@
     cursor: pointer;
     position: relative;
     transition: all 0.2s ease;
+    transform-origin: center;
 
     &:hover {
       background-color: #12151f;
     }
 
-    .job-item__icon {
-      position: absolute;
-      right: 5%;
-      top: 5%;
-      @include flex(row, space-between);
-      width: 90%;
-      height: 30%;
-      cursor: pointer;
-
-      .job-item__icon-icon {
-        color: white;
-        height: 20px;
-        letter-spacing: 0.1rem;
-        transition: 0.2s ease;
-        position: absolute;
-        right: 0;
-        &:hover {
-          color: rgb(22, 177, 22);
-        }
-      }
+    &:hover .job-item__icon-icon {
+      transform-origin: center;
+      color: rgb(27, 220, 20);
     }
+
+    .job-item__icon-icon {
+      color: white;
+      height: 24px;
+      letter-spacing: 0.1rem;
+      transition: 0.2s ease;
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
+      transform-origin: center;
+      transition: all 0.2s ease;
+    }
+
     .job-item__details {
       @include flex(column, center);
       width: 55%;

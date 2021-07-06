@@ -7,11 +7,10 @@ const Job = ({ company, title, deleteJob, id, goToJob }) => {
   return (
     <div className="job">
       <div className="job-item" onClick={() => goToJob(id)}>
-        <div className="job-item__icon">
-          <div className="job-item__icon-icon" onClick={() => goToJob(id)}>
-            <AddOutlinedIcon style={{ fontSize: 32 }} />
-          </div>
+        <div className="job-item__icon-icon" onClick={() => goToJob(id)}>
+          <AddOutlinedIcon style={{ fontSize: 32 }} />
         </div>
+
         <div className="job-item__details">
           <div className="job-item__details-info company">{company}</div>
           <div className="job-item__details-info job-title">{title}</div>

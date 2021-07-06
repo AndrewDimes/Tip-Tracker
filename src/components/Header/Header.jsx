@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.scss';
 import PlaylistAddOutlinedIcon from '@material-ui/icons/PlaylistAddOutlined';
 import { BsArrowLeft } from 'react-icons/bs';
@@ -13,9 +13,22 @@ const Header = ({
   jobSwitch,
   handleLogOut,
 }) => {
+  const [showHeader, setShowHeader] = useState(false);
+
+  // show header background on scroll
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        setShowHeader(true);
+      } else {
+        setShowHeader(false);
+      }
+    });
+  });
+
   if (jobPage) {
     return (
-      <section class="header">
+      <section className={showHeader ? 'header header-scroll' : 'header'}>
         <h3 className="header-container">
           <button onClick={handleLogOut} class="header__button">
             <ExitToAppOutlinedIcon style={{ fontSize: 32 }} />
@@ -31,7 +44,7 @@ const Header = ({
     );
   } else {
     return (
-      <section class="header">
+      <section className={showHeader ? 'header header-scroll' : 'header'}>
         <div className="header-container">
           <button onClick={handleLogOut} class="header__button">
             <ExitToAppOutlinedIcon style={{ fontSize: 32 }} />
