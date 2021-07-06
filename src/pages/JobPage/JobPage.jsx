@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 import Header from '../../components/Header/Header';
 import { useHistory } from 'react-router-dom';
 import jobService from '../../utils/jobService';
@@ -14,25 +23,24 @@ import './Calender.scss';
 import { Message } from 'semantic-ui-react';
 
 const JobPage = ({ handleLogOut }) => {
-  const [error, setError] = useState('')
-  const [job, setJob] = useState({})
-  const [jobSwitch, setJobSwitch] = useState(false)
+  const [error, setError] = useState('');
+  const [job, setJob] = useState({});
+  const [jobSwitch, setJobSwitch] = useState(false);
   const [value, onChange] = useState(new Date());
-  const [logIncome, setLogIncome] = useState(false)
-  const [wageFormView, setWageFormView] = useState(false)
-  const [viewIncome, setViewIncome] = useState(false)
-  const [wageData, setWageData] = useState({})
-  const [viewBy, setViewBy] = useState('m')
-  const [month, setMonth] = useState('')
-  const [year, setYear] = useState('')
-  const [monday, setMonday] = useState('')
-  const [sunday, setSunday] = useState('')
-  const [weekView, setWeekView] = useState(false)
-  const [monthView, setMonthView] = useState(false)
-  const [yearView, setYearView] = useState(false)
-  const [data, setData] = useState([])
-  const [submitMsg, setSubmitMsg] = useState(false)
-
+  const [logIncome, setLogIncome] = useState(false);
+  const [wageFormView, setWageFormView] = useState(false);
+  const [viewIncome, setViewIncome] = useState(false);
+  const [wageData, setWageData] = useState({});
+  const [viewBy, setViewBy] = useState('m');
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
+  const [monday, setMonday] = useState('');
+  const [sunday, setSunday] = useState('');
+  const [weekView, setWeekView] = useState(false);
+  const [monthView, setMonthView] = useState(false);
+  const [yearView, setYearView] = useState(false);
+  const [data, setData] = useState([]);
+  const [submitMsg, setSubmitMsg] = useState(false);
 
   async function getJob() {
     try {
@@ -50,53 +58,53 @@ const JobPage = ({ handleLogOut }) => {
 
   async function getWages() {
     try {
-      const data = await wageService.getWages(window.location.pathname.substring(1), viewBy)
-      setWageData(data)
+      const data = await wageService.getWages(
+        window.location.pathname.substring(1),
+        viewBy
+      );
+      setWageData(data);
     } catch (err) {
-      setError(err.message)
+      setError(err.message);
     }
   }
 
-  async function getGraphData(){
-  const month=new Array();
-  month[1]="Jan";
-  month[2]="Feb";
-  month[3]="Mar";
-  month[4]="Apr";
-  month[5]="May";
-  month[6]="Jun";
-  month[7]="Jul";
-  month[8]="Aug";
-  month[9]="Sep";
-  month[10]="Oct";
-  month[11]="Nov";
-  month[12]="Dec";
-  console.log(wageData.wages[0].date.slice(6,7))
-    const wage = wageData.wages.map((wage, index) =>
-    ({
-      name: month[wage.date.slice(6, 7)] + ' ' + wage.date.slice(8,10),
+  async function getGraphData() {
+    const month = new Array();
+    month[1] = 'Jan';
+    month[2] = 'Feb';
+    month[3] = 'Mar';
+    month[4] = 'Apr';
+    month[5] = 'May';
+    month[6] = 'Jun';
+    month[7] = 'Jul';
+    month[8] = 'Aug';
+    month[9] = 'Sep';
+    month[10] = 'Oct';
+    month[11] = 'Nov';
+    month[12] = 'Dec';
+    console.log(wageData.wages[0].date.slice(6, 7));
+    const wage = wageData.wages.map((wage, index) => ({
+      name: month[wage.date.slice(6, 7)] + ' ' + wage.date.slice(8, 10),
       wage: wage.wage * wage.hours,
       tips: wage.tips,
-      total: wage.tips + wage.wage * wage.hours
-    })
-    )
-    setData(wage)
+      total: wage.tips + wage.wage * wage.hours,
+    }));
+    setData(wage);
   }
   useEffect(() => {
-    getJob()
-  }, [jobSwitch])
+    getJob();
+  }, [jobSwitch]);
   useEffect(() => {
-    if(wageData.wages){
-      if(wageData.wages.length > 0){
-        getGraphData()
+    if (wageData.wages) {
+      if (wageData.wages.length > 0) {
+        getGraphData();
       }
-      
     }
-  }, [wageData])
+  }, [wageData]);
   useEffect(() => {
-    getWages()
-    getDate()
-  }, [viewBy])
+    getWages();
+    getDate();
+  }, [viewBy]);
 
   // if(submitMsg){
   //   setTimeout(() => { setSubmitMsg(false)}, 5000)
@@ -107,60 +115,57 @@ const JobPage = ({ handleLogOut }) => {
       wage: wageInfo.wage,
       tips: wageInfo.tips,
       hours: wageInfo.hours,
-      date: value
-    }
+      date: value,
+    };
     try {
-      await wageService.createWage(info, window.location.pathname.substring(1))
+      await wageService.createWage(info, window.location.pathname.substring(1));
       // Route to wherever you want!
-      setLogIncome(false)
-      setWageFormView(false)
-      setJobSwitch(true)
-      setSubmitMsg(true)
-
+      setLogIncome(false);
+      setWageFormView(false);
+      setJobSwitch(true);
+      setSubmitMsg(true);
     } catch (err) {
       // Invalid user data (probably duplicate email)
-      setError(err.message)
+      setError(err.message);
     }
-
-
   }
 
   function goBack() {
-    window.history.back()
+    window.history.back();
   }
 
   function theWageView(select) {
     if (select === 'm') {
-      setMonthView(true)
-      setWeekView(false)
-      setYearView(false)
+      setMonthView(true);
+      setWeekView(false);
+      setYearView(false);
     } else if (select === 'w') {
-      setWeekView(true)
-      setMonthView(false)
-      setYearView(false)
+      setWeekView(true);
+      setMonthView(false);
+      setYearView(false);
     } else if (select === 'y') {
-      setYearView(true)
-      setWeekView(false)
-      setMonthView(false)
+      setYearView(true);
+      setWeekView(false);
+      setMonthView(false);
     }
-    setViewBy(select)
+    setViewBy(select);
   }
 
   function getDate() {
-    const date = new Date();  // 2009-11-10
+    const date = new Date(); // 2009-11-10
     const month = date.toLocaleString('default', { month: 'long' });
     const year = date.toLocaleString('default', { year: 'numeric' });
-    setYear(year)
-    setMonth(month)
-    let curr = new Date
-    let week = []
+    setYear(year);
+    setMonth(month);
+    let curr = new Date();
+    let week = [];
     for (let i = 1; i <= 7; i++) {
-      let first = curr.getDate() - curr.getDay() + i
-      let day = new Date(curr.setDate(first))
-      week.push(day)
+      let first = curr.getDate() - curr.getDay() + i;
+      let day = new Date(curr.setDate(first));
+      week.push(day);
     }
-    let mondayRaw = week[0]
-    let sundayRaw = week[6]
+    let mondayRaw = week[0];
+    let sundayRaw = week[6];
     function getFormattedDate(date) {
       let year = date.getFullYear();
 
@@ -172,11 +177,10 @@ const JobPage = ({ handleLogOut }) => {
 
       return month + '/' + day + '/' + year;
     }
-    let mondayFormatted = getFormattedDate(mondayRaw)
-    let sundayFormatted = getFormattedDate(sundayRaw)
-    setMonday(mondayFormatted)
-    setSunday(sundayFormatted)
-
+    let mondayFormatted = getFormattedDate(mondayRaw);
+    let sundayFormatted = getFormattedDate(sundayRaw);
+    setMonday(mondayFormatted);
+    setSunday(sundayFormatted);
   }
 
   if (viewIncome !== true) {
@@ -202,20 +206,50 @@ const JobPage = ({ handleLogOut }) => {
               goBack={goBack}
             />
           )}
-        <Message>Your form for has been submitted successfully!</Message> 
-          {/* { submitMsg ? <Message>Your form for has been submitted successfully!</Message> : ''} */}
-          {logIncome ? '' : <div className="job-page__item-container">
-            <div className="job-page__item">
-              <h1 className="job-page__header">Just finished work?</h1>
-              <span onClick={() => { setLogIncome(true) }}><Btn label="Log Income" /></span>
+          {/* <Message>Your form for has been submitted successfully!</Message>  */}
+          {submitMsg ? (
+            <Message>Your form for has been submitted successfully!</Message>
+          ) : (
+            ''
+          )}
+          {logIncome ? (
+            ''
+          ) : (
+            <div className="job-page__item-container">
+              <div className="job-page__item">
+                <h1 className="job-page__header">Just finished work?</h1>
+                <span
+                  onClick={() => {
+                    setLogIncome(true);
+                  }}
+                >
+                  <Btn label="Log Income" />
+                </span>
+              </div>
+              <div className="job-page__item">
+                <h1 className="job-page__header">How much have you earned?</h1>
+                <span
+                  onClick={() => {
+                    setViewIncome(true);
+                  }}
+                >
+                  <Btn label="View Income" />
+                </span>
+              </div>
             </div>
-            <div className="job-page__item">
-              <h1 className="job-page__header">How much have you earned?</h1>
-              <span onClick={() => { setViewIncome(true) }}><Btn label="View Income" /></span>
-            </div>
-          </div>}
+          )}
           {logIncome ? <Calendar onChange={onChange} value={value} /> : ''}
-          {logIncome ? <span onClick={() => { setWageFormView(true) }}><Btn label="Enter" /> </span> : ''}
+          {logIncome ? (
+            <span
+              onClick={() => {
+                setWageFormView(true);
+              }}
+            >
+              <Btn label="Enter" />{' '}
+            </span>
+          ) : (
+            ''
+          )}
         </>
       );
     } else {
@@ -235,14 +269,31 @@ const JobPage = ({ handleLogOut }) => {
       );
     }
   } else {
-
     return (
       <>
-        <Header goBack={() => { setViewIncome(false) }} handleLogOut={handleLogOut} job={job} jobSwitch={jobSwitch} jobPage={true} />
+        <Header
+          goBack={() => {
+            setViewIncome(false);
+          }}
+          handleLogOut={handleLogOut}
+          job={job}
+          jobSwitch={jobSwitch}
+          jobPage={true}
+        />
         <WageChart data={data} />
-        <WageDetail monday={monday} sunday={sunday} year={year} month={month} wageData={wageData} theWageView={theWageView} weekView={weekView} monthView={monthView} yearView={yearView} />
+        <WageDetail
+          monday={monday}
+          sunday={sunday}
+          year={year}
+          month={month}
+          wageData={wageData}
+          theWageView={theWageView}
+          weekView={weekView}
+          monthView={monthView}
+          yearView={yearView}
+        />
       </>
-    )
+    );
   }
-}
+};
 export default JobPage;
