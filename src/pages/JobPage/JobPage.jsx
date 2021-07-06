@@ -239,6 +239,7 @@ const JobPage = ({ handleLogOut }) => {
             </div>
           )}
           {logIncome ? <Calendar onChange={onChange} value={value} /> : ''}
+          <br />
           {logIncome ? (
             <span
               onClick={() => {
@@ -279,7 +280,8 @@ const JobPage = ({ handleLogOut }) => {
           job={job}
           jobSwitch={jobSwitch}
           jobPage={true}
-        />
+        /> 
+        <br></br><br /><br /><br />
         <WageChart data={data} />
         <WageDetail
           monday={monday}
@@ -292,6 +294,7 @@ const JobPage = ({ handleLogOut }) => {
           monthView={monthView}
           yearView={yearView}
         />
+        <br></br><br /><br />
       </>
     );
   }

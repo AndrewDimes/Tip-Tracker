@@ -15,8 +15,8 @@ const WageDetail = ({
     monthView = true;
   }
   return (
-    <div>
-      <div style={{ marginTop: '15%' }} class="three ui buttons">
+    <div style={{width:'50%'}}>
+      <div style={{ marginTop: '2%' }} class="three ui buttons">
         <button onClick={() => theWageView('w')} class="ui button">
           Weekly
         </button>
@@ -28,15 +28,15 @@ const WageDetail = ({
         </button>
       </div>
       <br />
-      {monthView ? <h1 style={{ color: 'white' }}>{month}</h1> : ''}
+      {monthView ? <h1 style={{ color: 'white', textAlign: 'center' }}>{month}</h1> : ''}
       {weekView ? (
-        <h1 style={{ color: 'white' }}>
+        <h1 style={{ color: 'white', textAlign: 'center'  }}>
           {monday} - {sunday}
         </h1>
       ) : (
         ''
       )}
-      {yearView ? <h1 style={{ color: 'white' }}>{year}</h1> : ''}
+      {yearView ? <h1 style={{ color: 'white', textAlign: 'center'  }}>{year}</h1> : ''}
       <blockquote style={{ color: 'white', backgroundColor: 'gray' }}>
         Income information
       </blockquote>
