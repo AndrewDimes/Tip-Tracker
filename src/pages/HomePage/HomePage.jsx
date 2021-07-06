@@ -4,6 +4,7 @@ import Job from '../../components/Job/Job';
 import JobForm from '../../components/Job/JobForm';
 import jobService from '../../utils/jobService';
 import { useHistory } from 'react-router-dom';
+import './HomePage.scss';
 
 export default function HomePage({ handleLogOut }) {
   const [error, setError] = useState('');
@@ -86,14 +87,18 @@ export default function HomePage({ handleLogOut }) {
 
   return (
     <>
-      <Header
-        handleLogOut={handleLogOut}
-        addJob={addJob}
-        jobForm={jobForm}
-        goBack={goBack}
-      />
-      {jobForm ? '' : jobItems}
-      {jobForm ? <JobForm handleSubmit={handleSubmit} /> : ''}
+      <div className="home-body">
+        <Header
+          handleLogOut={handleLogOut}
+          addJob={addJob}
+          jobForm={jobForm}
+          goBack={goBack}
+        />
+        <div className="home-job__item-container">
+          {jobForm ? '' : jobItems}
+          {jobForm ? <JobForm handleSubmit={handleSubmit} /> : ''}
+        </div>
+      </div>
     </>
   );
 }
