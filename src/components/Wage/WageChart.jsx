@@ -1,17 +1,25 @@
 import React, { PureComponent } from 'react';
 import { HiOutlineRss } from 'react-icons/hi';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 
 
 
 const WageChart = ({ data }) => {
   return (
-    <ResponsiveContainer width="60%" height="60%">
+    <ResponsiveContainer width="60%" height="40%">
       <LineChart
         data={data}
         margin={{
-          top: 50,
+          top: 100,
           right: 50,
           left: 20,
           bottom: 0,
@@ -22,15 +30,17 @@ const WageChart = ({ data }) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="wage" stroke="#8884d8" activeDot={{ r: 8 }} />
+        <Line
+          type="monotone"
+          dataKey="wage"
+          stroke="#8884d8"
+          activeDot={{ r: 8 }}
+        />
         <Line type="monotone" dataKey="tips" stroke="#82ca9d" />
         <Line type="monotone" dataKey="total" stroke="#8B9E8C" />
       </LineChart>
     </ResponsiveContainer>
+  );
+};
 
-  )
-}
-
-export default WageChart
-
-
+export default WageChart;
