@@ -5,55 +5,9 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 
 const WageChart = ({ data }) => {
-  // const data = [
-  //     {
-  //       name: 'Page A',
-  //       wage: 4000,
-  //       tips: 2400,
-  //       total: 2400,
-  //     },
-  //     {
-  //       name: 'Page B',
-  //       wage: 3000,
-  //       tips: 1398,
-  //       total: 2210,
-  //     },
-  //     {
-  //       name: 'Page C',
-  //       wage: 2000,
-  //       tips: 9800,
-  //       total: 2290,
-  //     },
-  //     {
-  //       name: 'Page D',
-  //       wage: 2780,
-  //       tips: 3908,
-  //       total: 2000,
-  //     },
-  //     {
-  //       name: 'Page E',
-  //       wage: 1890,
-  //       tips: 4800,
-  //       total: 2181,
-  //     },
-  //     {
-  //       name: 'Page F',
-  //       wage: 2390,
-  //       tips: 3800,
-  //       total: 2500,
-  //     },
-  //     {
-  //       name: 'Page G',
-  //       wage: 3490,
-  //       tips: 4300,
-  //       total: 2100,
-  //     },
-  //   ];
   return (
     <ResponsiveContainer width="60%" height="60%">
       <LineChart
-        width={500}
-        height={300}
         data={data}
         margin={{
           top: 50,
@@ -62,7 +16,7 @@ const WageChart = ({ data }) => {
           bottom: 0,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid strokeDasharray="3 3"/>
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
