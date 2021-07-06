@@ -107,7 +107,7 @@ const JobPage = ({ handleLogOut }) => {
   }, [viewBy]);
 
   if(submitMsg){
-    setTimeout(() => { setSubmitMsg(false)}, 5000)
+    setTimeout(() => { setSubmitMsg(false)}, 4000)
   }
 
   async function wageFormSubmit(wageInfo) {
