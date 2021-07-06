@@ -5,20 +5,20 @@ import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
 
 const Job = ({ company, title, deleteJob, id, goToJob }) => {
   return (
-    <div className="job">
+    <div className="job" onClick={() => goToJob(id)}>
       <div className="job-item">
         <div className="job-item__icon">
-          <div className="job-item__icon-icon" onClick={() => deleteJob(id)}>
-            <DeleteForeverOutlinedIcon fontSize="medium" />
-          </div>
           <div className="job-item__icon-icon" onClick={() => goToJob(id)}>
-            <AddOutlinedIcon fontSize="medium" />
+            <AddOutlinedIcon style={{ fontSize: 32 }} />
           </div>
         </div>
         <div className="job-item__details">
           <div className="job-item__details-info company">{company}</div>
           <div className="job-item__details-info job-title">{title}</div>
         </div>
+      </div>
+      <div className="job-item__delete" onClick={() => deleteJob(id)}>
+        <DeleteForeverOutlinedIcon style={{ fontSize: 48 }} />
       </div>
     </div>
   );
