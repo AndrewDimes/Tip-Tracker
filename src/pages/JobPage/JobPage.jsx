@@ -98,9 +98,9 @@ const JobPage = ({ handleLogOut }) => {
     getDate()
   }, [viewBy])
 
-  // if(submitMsg){
-  //   setTimeout(() => { setSubmitMsg(false)}, 5000)
-  // }
+  if(submitMsg){
+    setTimeout(() => { setSubmitMsg(false)}, 5000)
+  }
 
   async function wageFormSubmit(wageInfo) {
     const info = {
@@ -202,8 +202,8 @@ const JobPage = ({ handleLogOut }) => {
               goBack={goBack}
             />
           )}
-        <Message>Your form for has been submitted successfully!</Message> 
-          {/* { submitMsg ? <Message>Your form for has been submitted successfully!</Message> : ''} */}
+        {/* <Message>Your form for has been submitted successfully!</Message>  */}
+          { submitMsg ? <Message>Your form for has been submitted successfully!</Message> : ''}
           {logIncome ? '' : <div className="job-page__item-container">
             <div className="job-page__item">
               <h1 className="job-page__header">Just finished work?</h1>
