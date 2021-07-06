@@ -18,7 +18,7 @@ const Header = ({
       <section class="header">
         <h3 className="header-container">
           <button onClick={handleLogOut} class="header__button">
-            <ExitToAppOutlinedIcon />
+            <ExitToAppOutlinedIcon style={{ fontSize: 32 }} />
           </button>
           <span className="header-span">
             {jobSwitch ? job.job.companyName : ''}
@@ -34,7 +34,7 @@ const Header = ({
       <section class="header">
         <div className="header-container">
           <button onClick={handleLogOut} class="header__button">
-            <ExitToAppOutlinedIcon />
+            <ExitToAppOutlinedIcon style={{ fontSize: 32 }} />
           </button>
           <span className="header-span">
             {jobForm ? 'Add a job' : 'Select a job'}
