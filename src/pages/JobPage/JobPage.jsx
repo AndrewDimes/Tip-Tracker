@@ -11,6 +11,7 @@ import Calendar from 'react-calendar';
 import Btn from '../../components/Buttons/Btn';
 import './JobPage.scss';
 import './Calender.scss';
+
 import { Message } from 'semantic-ui-react';
 
 const JobPage = ({ handleLogOut }) => {
