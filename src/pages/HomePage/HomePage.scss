@@ -1,0 +1,12 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.home-body {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+
+  .home-job__item-container {
+    margin-top: 10vh;
+  }
+}
