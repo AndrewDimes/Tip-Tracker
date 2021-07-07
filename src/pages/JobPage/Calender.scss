@@ -1,33 +1,68 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
 .react-calendar {
-  width: 500px;
+  width: 550px;
+  margin-bottom: 2rem;
 
   .react-calendar__navigation {
     .react-calendar__navigation__arrow {
-      display: none;
+      font-size: 3rem;
+      margin: 0rem 0.5rem;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: white;
     }
 
     .react-calendar__navigation__label {
-      font-size: 32px;
+      font-size: 48px;
+      background-color: $neon-02-24-hex;
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 1rem;
     }
   }
 
   .react-calendar__tile {
-    height: 70px;
+    height: 64px;
+    width: 64px;
+    outline: none;
+    border: none;
+    background-color: $neon-02-24-hex;
+    color: white;
+    font-weight: 100;
+
+    &:hover {
+      background: $neon-02-22-hex;
+      color: white;
+    }
   }
 
   .react-calendar__month-view__weekdays__weekday {
     font-size: 16px;
-    color: rgb(255, 255, 255);
+    background-color: $neon-02-24-hex;
+    color: white;
+    text-align: center;
+    font-weight: 900;
+    text-decoration: none;
+    padding: 1rem;
+    abbr {
+      text-decoration: none;
+    }
   }
 
   .react-calendar__tile--active {
-    background: #e70220;
+    background: $neon-02-2-hex;
     color: white;
+    outline: hidden;
+    border: none;
   }
 
   .react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active:enabled:focus {
-    background: #e70220;
+    background: $neon-02-22-hex;
   }
 
   .react-calendar__tile,
