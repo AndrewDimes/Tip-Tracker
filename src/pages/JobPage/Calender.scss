@@ -4,7 +4,9 @@
 .react-calendar {
   width: 550px;
   margin-bottom: 2rem;
-
+  border: 1px solid white;
+  padding: 2rem;
+  border-radius: 10px;
   .react-calendar__navigation {
     .react-calendar__navigation__arrow {
       font-size: 3rem;
@@ -13,15 +15,24 @@
       border: none;
       cursor: pointer;
       color: white;
+      transition: color 0.2s ease;
+      &:hover {
+        color: $neon-02-2-hex;
+      }
     }
 
     .react-calendar__navigation__label {
-      font-size: 48px;
+      font-size: 32px;
       background-color: $neon-02-24-hex;
       border: none;
       color: white;
       font-weight: 700;
       padding: 1rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      &:hover {
+        color: $neon-02-2-hex;
+      }
     }
   }
 
@@ -33,10 +44,13 @@
     background-color: $neon-02-24-hex;
     color: white;
     font-weight: 100;
+    cursor: pointer;
+    transition: all 0.1s ease;
 
     &:hover {
-      background: $neon-02-22-hex;
+      background: $neon-02-2-hex;
       color: white;
+      border-radius: 0.5rem;
     }
   }
 
@@ -48,25 +62,29 @@
     font-weight: 900;
     text-decoration: none;
     padding: 1rem;
+
     abbr {
       text-decoration: none;
     }
   }
 
   .react-calendar__tile--active {
-    background: $neon-02-2-hex;
+    background: crimson;
+    border-radius: 0.5rem;
     color: white;
     outline: hidden;
     border: none;
+    font-size: 24px;
   }
 
   .react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active:enabled:focus {
-    background: $neon-02-22-hex;
+    background: crimson;
+    font-size: 32px;
   }
 
   .react-calendar__tile,
   .react-calendar__month-view__days__day {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
