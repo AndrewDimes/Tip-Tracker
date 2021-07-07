@@ -5,9 +5,13 @@
   width: 100vw;
   height: 10vh;
   @include flex(row, center);
-  margin-bottom: 3rem;
-  position: absolute;
+  margin-bottom: 1rem;
+  position: fixed;
   top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(8, 10, 17, 0);
+  transition: background-color 0.5s ease;
 
   .header-span {
     color: white;
@@ -37,4 +41,9 @@
       font-size: 32px;
     }
   }
+}
+
+.header-scroll {
+  background-color: rgba(8, 10, 17, 0.95);
+  transition: background-color 0.5s ease;
 }
