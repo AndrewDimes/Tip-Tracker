@@ -83,8 +83,10 @@ const JobPage = ({ handleLogOut }) => {
     month[10] = 'Oct';
     month[11] = 'Nov';
     month[12] = 'Dec';
-    console.log(wageData.wages[0].date.slice(6, 7));
-    const wage = wageData.wages.map((wage, index) => ({
+    const sortedData = wageData.wages.sort((a,b) => new Date(b.date) < new Date(a.date) ? 1: -1)
+    console.log(sortedData)
+    const wage = wageData.wages.sort((a,b) => b.date - a.date)
+    .map((wage, index) => ({
       name: month[wage.date.slice(6, 7)] + ' ' + wage.date.slice(8, 10),
       wage: wage.wage * wage.hours,
       tips: wage.tips,

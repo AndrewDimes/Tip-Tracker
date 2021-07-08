@@ -92,7 +92,7 @@ const WageDetail = ({
             <div style={{ color: 'white' }}>
               {' '}
               {wageData.averageIncome
-                ? wageData.averageIncome.toFixed(2)
+                ? wageData.averageIncome.toFixed(2) + "/hr"
                 : ''}{' '}
             </div>
           </div>
