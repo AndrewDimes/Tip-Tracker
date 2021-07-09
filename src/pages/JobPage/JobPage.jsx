@@ -211,9 +211,11 @@ const JobPage = ({ handleLogOut }) => {
               goBack={goBack}
             />
           )}
-          {/* <Message>Your form for has been submitted successfully!</Message> */}
+
           {submitMsg ? (
-            <Message>Your form for has been submitted successfully!</Message>
+            <div className="submit-successful">
+              Your form for has been submitted successfully!
+            </div>
           ) : (
             ''
           )}
