@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './WageForm.scss';
+import Btn from '../Buttons/Btn';
 
 const WageForm = ({ wageFormSubmit }) => {
   const [error, setError] = useState('');
@@ -15,27 +17,33 @@ const WageForm = ({ wageFormSubmit }) => {
   }
 
   return (
-    <div style={{ marginLeft: '20%', marginRight: '20%' }} className="ui form">
-      <div className="field">
-        <label style={{ color: 'white' }}>Hourly Wage</label>
-        <input name="wage" onChange={handleChange} type="number"></input>
+    <div className="wage__form">
+      <h1>Wage Form</h1>
+      <div className="wage__form-field">
+        <label>Hourly Wage</label>
+        <input
+          className="number-input"
+          name="wage"
+          onChange={handleChange}
+          type="number"
+        ></input>
       </div>
-      <div className="field">
-        <label style={{ color: 'white' }}>Tips</label>
+      <div className="wage__form-field">
+        <label>Tips</label>
         <input name="tips" onChange={handleChange} type="number"></input>
       </div>
-      <div className="field">
+      <div className="wage__form-field">
         <label style={{ color: 'white' }}>Hours</label>
         <input name="hours" onChange={handleChange} type="number"></input>
       </div>
-      <div
+      <span
         onClick={() => {
           wageFormSubmit(state);
         }}
-        className="ui submit button"
+        className="wage__form-button"
       >
-        Submit
-      </div>
+        <Btn label="Submit" />
+      </span>
     </div>
   );
 };
