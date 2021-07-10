@@ -9,21 +9,32 @@ const WageForm = ({ wageFormSubmit, dateValue }) => {
     tips: null,
     hours: null,
   });
-  // const month = new Array();
-  // month[1] = 'January';
-  // month[2] = 'February';
-  // month[3] = 'March';
-  // month[4] = 'April';
-  // month[5] = 'May';
-  // month[6] = 'June';
-  // month[7] = 'July';
-  // month[8] = 'August';
-  // month[9] = 'September';
-  // month[10] = 'October';
-  // month[11] = 'November';
-  // month[12] = 'December';
-  console.log(dateValue, dateValue.slice(6, 7))
-  const theDate = dateValue.slice(4, 7) + ' ' + dateValue.slice(8, 10) + ', '+ dateValue.slice(11, 15)
+  let month;
+  if(dateValue.slice(4, 7) === 'Jan'){
+    month="January"
+  }else if(dateValue.slice(4, 7) === 'Feb'){
+    month="February"
+  }else if(dateValue.slice(4, 7) === 'Mar'){
+    month="March"
+  }else if(dateValue.slice(4, 7) === 'Apr'){
+    month="April"
+  }else if(dateValue.slice(4, 7) === 'Jun'){
+    month="June"
+  }else if(dateValue.slice(4, 7) === 'Jul'){
+    month="July"
+  }else if(dateValue.slice(4, 7) === 'Aug'){
+    month="August"
+  }else if(dateValue.slice(4, 7) === 'Sep'){
+    month="September"
+  }else if(dateValue.slice(4, 7) === 'Oct'){
+    month="October"
+  }else if(dateValue.slice(4, 7) === 'Nov'){
+    month="November"
+  }else if(dateValue.slice(4, 7) === 'Dec'){
+    month="December"
+  }
+
+  const theDate = month + ' ' + dateValue.slice(8, 10) + ', '+ dateValue.slice(11, 15)
   function handleChange(e) {
     setState({
       ...state,
