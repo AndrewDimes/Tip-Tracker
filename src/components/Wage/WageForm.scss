@@ -1,0 +1,33 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.wage__form {
+  @include flex(column, center);
+  width: 554px;
+  padding: 2rem;
+  border-radius: 10px;
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 4rem;
+  }
+  .wage__form-field {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    @include flex(row, space-between);
+    label {
+      font-size: 2rem;
+    }
+    input {
+      width: 30%;
+      border: none;
+      border-radius: 5px;
+      padding: 0.75rem;
+
+      outline: none;
+      background-color: white;
+    }
+  }
+  .wage__form-button {
+    margin-top: 2rem;
+  }
+}
