@@ -19,21 +19,21 @@ const JobPage = ({ handleLogOut }) => {
   const [job, setJob] = useState({})
   const [jobSwitch, setJobSwitch] = useState(false)
   const [value, onChange] = useState(new Date());
-  const [logIncome, setLogIncome] = useState(false)
-  const [wageFormView, setWageFormView] = useState(false)
-  const [viewIncome, setViewIncome] = useState(false)
-  const [wageData, setWageData] = useState({})
-  const [viewBy, setViewBy] = useState('m')
-  const [month, setMonth] = useState('')
-  const [year, setYear] = useState('')
-  const [monday, setMonday] = useState('')
-  const [sunday, setSunday] = useState('')
-  const [weekView, setWeekView] = useState(false)
-  const [monthView, setMonthView] = useState(false)
-  const [yearView, setYearView] = useState(false)
-  const [data, setData] = useState([])
-  const [submitMsg, setSubmitMsg] = useState(false)
-
+  const [logIncome, setLogIncome] = useState(false);
+  const [wageFormView, setWageFormView] = useState(false);
+  const [viewIncome, setViewIncome] = useState(false);
+  const [wageData, setWageData] = useState({});
+  const [viewBy, setViewBy] = useState('m');
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
+  const [monday, setMonday] = useState('');
+  const [sunday, setSunday] = useState('');
+  const [weekView, setWeekView] = useState(false);
+  const [monthView, setMonthView] = useState(false);
+  const [yearView, setYearView] = useState(false);
+  const [data, setData] = useState([]);
+  const [submitMsg, setSubmitMsg] = useState(false);
+  const [dateValue, setDateValue] = useState(null)
 
   async function getJob() {
     try {
@@ -73,7 +73,6 @@ const JobPage = ({ handleLogOut }) => {
     month[11] = 'Nov';
     month[12] = 'Dec';
     const sortedData = wageData.wages.sort((a,b) => new Date(b.date) < new Date(a.date) ? 1: -1)
-    console.log(sortedData)
     const wage = wageData.wages.sort((a,b) => b.date - a.date)
     .map((wage, index) => ({
       name: month[wage.date.slice(6, 7)] + ' ' + wage.date.slice(8, 10),
@@ -243,7 +242,7 @@ const JobPage = ({ handleLogOut }) => {
               setWageFormView(false);
             }}
           />
-          <WageForm wageFormSubmit={wageFormSubmit} />
+          <WageForm wageFormSubmit={wageFormSubmit} dateValue={value.toString()} />
         </>
       );
     }
