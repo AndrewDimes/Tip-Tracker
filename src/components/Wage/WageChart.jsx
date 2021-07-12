@@ -11,21 +11,19 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-
-
 const WageChart = ({ data }) => {
   return (
-    <ResponsiveContainer width="60%" height="40%">
+    <ResponsiveContainer width="40%" height="30%">
       <LineChart
         data={data}
         margin={{
           top: 20,
           right: 50,
           left: 20,
-          bottom: 0,
+          bottom: 50,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3"/>
+        <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
@@ -33,11 +31,11 @@ const WageChart = ({ data }) => {
         <Line
           type="monotone"
           dataKey="wage"
-          stroke="#8884d8"
+          stroke="rgb(179, 0, 36)"
           activeDot={{ r: 8 }}
         />
-        <Line type="monotone" dataKey="tips" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="total" stroke="#8B9E8C" />
+        <Line type="monotone" dataKey="tips" stroke="#3bccdb" />
+        <Line type="monotone" dataKey="total" stroke="#ffffff" />
       </LineChart>
     </ResponsiveContainer>
   );

@@ -1,0 +1,51 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.wage-details {
+  .wage-details__header-buttons {
+    @include flex(row, space-between);
+    margin-bottom: 1rem;
+    button {
+      flex: 1;
+      background-color: $neon-02-2-hex;
+      color: white;
+      font-size: 1.25rem;
+      &:hover {
+        background-color: $neon-02-22-hex;
+        color: white;
+      }
+    }
+  }
+
+  .wage-details__data-header {
+    padding: 0.75rem;
+    color: $money-rose;
+  }
+
+  .wage-details__date {
+    margin-bottom: 1rem;
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+  .content {
+    font-size: 1.25rem;
+  }
+
+  .left {
+    font-weight: 100;
+    letter-spacing: 0.025rem;
+  }
+
+  .right {
+    font-weight: 900;
+    color: white;
+    font-size: 1.5rem;
+    letter-spacing: 0.025rem;
+  }
+
+  .item {
+    margin-bottom: 0.5rem;
+  }
+}
