@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './WageDetails.scss';
 
 const WageDetail = ({
   wageData,
@@ -15,38 +16,44 @@ const WageDetail = ({
     monthView = true;
   }
   return (
-    <div style={{width:'50%'}}>
-      <div style={{ marginTop: '2%' }} class="three ui buttons">
-        <button onClick={() => theWageView('w')} class="ui button">
+    <div className="wage-details" style={{ width: '40%' }}>
+      <div className="wage-details__header-buttons">
+        <button onClick={() => theWageView('w')} className="ui button">
           Weekly
         </button>
-        <button onClick={() => theWageView('m')} class="ui button">
+        <button onClick={() => theWageView('m')} className="ui button">
           Monthly
         </button>
-        <button onClick={() => theWageView('y')} class="ui button">
+        <button onClick={() => theWageView('y')} className="ui button">
           Yearly
         </button>
       </div>
-      <br />
-      {monthView ? <h1 style={{ color: 'white', textAlign: 'center' }}>{month}</h1> : ''}
-      {weekView ? (
-        <h1 style={{ color: 'white', textAlign: 'center'  }}>
-          {monday} - {sunday}
-        </h1>
-      ) : (
-        ''
-      )}
-      {yearView ? <h1 style={{ color: 'white', textAlign: 'center'  }}>{year}</h1> : ''}
-      <blockquote style={{ color: 'white', backgroundColor: 'gray' }}>
-        Income information
-      </blockquote>
+      <div className="wage-details__date">
+        {monthView ? (
+          <h1 style={{ color: 'white', textAlign: 'center' }}>{month}</h1>
+        ) : (
+          ''
+        )}
+        {weekView ? (
+          <h1 style={{ color: 'white', textAlign: 'center' }}>
+            {monday} - {sunday}
+          </h1>
+        ) : (
+          ''
+        )}
+        {yearView ? (
+          <h1 style={{ color: 'white', textAlign: 'center' }}>{year}</h1>
+        ) : (
+          ''
+        )}
+      </div>
+      <div className="wage-details__data-header">
+        <h1>Income information</h1>
+      </div>
       <div class="ui middle aligned divided list">
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
-              {' '}
-              {wageData.totalIncome.toFixed(2)}{' '}
-            </div>
+            <div className="inputs"> {wageData.totalIncome.toFixed(2)} </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             Total Income{' '}
@@ -54,10 +61,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
-              {' '}
-              {wageData.totalWages.toFixed(2)}{' '}
-            </div>
+            <div className="inputs"> {wageData.totalWages.toFixed(2)} </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             {' '}
@@ -66,10 +70,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
-              {' '}
-              {wageData.totalTips.toFixed(2)}
-            </div>
+            <div className="inputs"> {wageData.totalTips.toFixed(2)}</div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             {' '}
@@ -78,10 +79,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
-              {' '}
-              {wageData.totalHours.toFixed(2)}{' '}
-            </div>
+            <div className="inputs"> {wageData.totalHours.toFixed(2)} </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             Hours Worked{' '}
@@ -89,10 +87,10 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
+            <div className="inputs">
               {' '}
               {wageData.averageIncome
-                ? wageData.averageIncome.toFixed(2) + "/hr"
+                ? wageData.averageIncome.toFixed(2) + '/hr'
                 : ''}{' '}
             </div>
           </div>
@@ -102,13 +100,14 @@ const WageDetail = ({
           </div>
         </div>
       </div>
-      <blockquote style={{ color: 'white', backgroundColor: 'gray' }}>
-        Average income by day
-      </blockquote>
+      <div className="wage-details__data-header">
+        <h1>Average income by day</h1>
+      </div>
+
       <div class="ui middle aligned divided list">
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
+            <div className="inputs">
               {' '}
               {wageData.mondayAvg
                 ? wageData.mondayAvg.toFixed(2) + '/hr'
@@ -121,7 +120,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
+            <div className="inputs">
               {' '}
               {wageData.tuesdayAvg
                 ? wageData.tuesdayAvg.toFixed(2) + '/hr'
@@ -135,7 +134,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
+            <div className="inputs">
               {' '}
               {wageData.wednesdayAvg
                 ? wageData.wednesdayAvg.toFixed(2) + '/hr'
@@ -149,7 +148,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
+            <div className="inputs">
               {' '}
               {wageData.thursdayAvg
                 ? wageData.thursdayAvg.toFixed(2) + '/hr'
@@ -162,7 +161,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
+            <div className="inputs">
               {' '}
               {wageData.fridayAvg
                 ? wageData.fridayAvg.toFixed(2) + '/hr'
@@ -176,7 +175,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
+            <div className="inputs">
               {' '}
               {wageData.saturdayAvg
                 ? wageData.saturdayAvg.toFixed(2) + '/hr'
@@ -190,7 +189,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div style={{ color: 'white' }}>
+            <div className="inputs">
               {' '}
               {wageData.sundayAvg
                 ? wageData.sundayAvg.toFixed(2) + '/hr'
