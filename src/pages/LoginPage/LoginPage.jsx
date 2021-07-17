@@ -40,6 +40,10 @@ export default function LoginPage(props) {
   return (
     <>
       <section className="login-page">
+        <div className="money-tree__logo">
+          <h3>Money Tree </h3>
+          <img src={Logo} alt="money-tree-logo" />
+        </div>
         <div className="login-page__header">
           <h1>Log-in</h1>
         </div>
