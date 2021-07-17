@@ -34,7 +34,7 @@ const WageChart = ({ data }) => {
           stroke="rgb(179, 0, 36)"
           activeDot={{ r: 8 }}
         />
-        <Line type="monotone" dataKey="tips" stroke="#3bccdb" />
+        <Line type="monotone" dataKey="tips" stroke="#5a71f5" />
         <Line type="monotone" dataKey="total" stroke="#ffffff" />
       </LineChart>
     </ResponsiveContainer>
