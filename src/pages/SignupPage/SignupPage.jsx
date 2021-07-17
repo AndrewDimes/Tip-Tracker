@@ -3,6 +3,9 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
 import './SignupPage.scss';
+import Logo from '../../img/money-tree9.png';
+import MoneyJar from '../../img/Money-Jar.svg';
+import Money from '../../img/Money.svg';
 
 import Btn from '../../components/Buttons/Btn';
 
@@ -53,68 +56,83 @@ export default function SignUpPage(props) {
     <>
       <section className="signup-page">
         <div className="signup-page__left">
-          <div className="signup-page__header">
-            <h1>Sign Up</h1>
+          <div className="money-tree__logo">
+            <h3>Money Tree </h3>
+            <img src={Logo} alt="money-tree-logo" />
           </div>
-          <form autoComplete="off" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={state.username}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={state.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={state.password}
-              onChange={handleChange}
-              required
-            />
-            <input
-              name="passwordConf"
-              type="password"
-              placeholder="Confirm Password"
-              value={state.passwordConf}
-              onChange={handleChange}
-              required
-            />
-            <Btn
-              className="btn"
-              type="submit"
-              label="Sign up"
-              disabled={invalidForm}
-            />
+          <div className="signup-page__form-container">
+            <div className="signup-page__header">
+              <h1>Sign Up</h1>
+            </div>
+            <form autoComplete="off" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={state.username}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={state.email}
+                onChange={handleChange}
+                required
+              />
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={state.password}
+                onChange={handleChange}
+                required
+              />
+              <input
+                name="passwordConf"
+                type="password"
+                placeholder="Confirm Password"
+                value={state.passwordConf}
+                onChange={handleChange}
+                required
+              />
+              <Btn
+                className="btn"
+                type="submit"
+                label="Sign up"
+                disabled={invalidForm}
+              />
 
-            {error ? <ErrorMessage error={error} /> : null}
-            <small>
-              Already have an account?{' '}
-              <Link to="/login">
-                {' '}
-                <span>Log in</span>
-              </Link>
-            </small>
-          </form>
+              {error ? <ErrorMessage error={error} /> : null}
+              <small>
+                Already have an account?{' '}
+                <Link to="/login">
+                  {' '}
+                  <span>Log in</span>
+                </Link>
+              </small>
+            </form>
+          </div>
         </div>
         <div className="signup-page__right">
           <div className="signup-page__right-info">
-            <h1>Track your income and take better control of your finances.</h1>
-            <p>
-              If your primary source of income is tips, financial planning can
-              be challenging. <span>TipTree</span> is a simple, intuitive and
-              free tool for you to track how much money you make to help you
-              improve your financial life
-            </p>
+            <div className="signup-page__right-img">
+              <img src={MoneyJar} alt="money-jar" />
+            </div>
+            <div className="signup-page__right-head">
+              <h1>
+                Track your income and take better control of your finances.
+              </h1>
+            </div>
+            <div className="signup-page__right-paragraph">
+              <p>
+                If your primary source of income is tips, financial planning can
+                be challenging. <span>TipTree</span> is a simple, intuitive and
+                free tool for you to track how much money you make to help you
+                improve your financial life
+              </p>
+            </div>
           </div>
         </div>
       </section>
