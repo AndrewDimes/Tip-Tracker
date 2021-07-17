@@ -5,6 +5,7 @@
   @include flex(row, space-between);
   border-radius: 20px;
   width: 780px;
+  flex-wrap: wrap;
 
   padding: 2rem;
   .job-page__item {
@@ -44,7 +45,7 @@
       margin-bottom: 1.5rem;
       color: white;
       font-weight: 100;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       text-align: left;
       letter-spacing: 0.05rem;
     }
