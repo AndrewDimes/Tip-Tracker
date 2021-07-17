@@ -109,9 +109,13 @@
       .signup-page__right-paragraph {
         position: relative;
         grid-column: 1/3;
+
         p {
           position: absolute;
-          font-size: 1.25rem;
+          font-size: 1.5rem;
+        }
+        span {
+          color: #fea500;
         }
       }
     }
