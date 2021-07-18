@@ -53,7 +53,7 @@ const WageDetail = ({
       <div class="ui middle aligned divided list">
         <div class="item">
           <div class="right floated content">
-            <div className="inputs"> {wageData.totalIncome.toFixed(2)} </div>
+            <div className="inputs"> {wageData.totalIncome ? wageData.totalIncome.toFixed(2): ''} </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             Total Income{' '}
@@ -61,7 +61,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div className="inputs"> {wageData.totalWages.toFixed(2)} </div>
+            <div className="inputs"> {wageData.totalWages ? wageData.totalWages.toFixed(2) : ''} </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             {' '}
@@ -70,7 +70,7 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div className="inputs"> {wageData.totalTips.toFixed(2)}</div>
+            <div className="inputs"> {wageData.totalTips ? wageData.totalTips.toFixed(2) : ''}</div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             {' '}
