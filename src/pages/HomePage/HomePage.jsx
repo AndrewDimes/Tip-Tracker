@@ -78,6 +78,7 @@ export default function HomePage({ handleLogOut }) {
           key={index}
           company={job.companyName}
           title={job.jobTitle}
+          updated={job.updatedAt}
         />
       );
     });
