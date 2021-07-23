@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+//flex
 import { flex } from '../../styles/mixins';
+//media queries
+import { size } from '../../styles/mediaQueries';
 
 export const Wrapper = styled.section`
   ${flex}
@@ -8,6 +11,12 @@ export const Wrapper = styled.section`
 export const Container = styled.div`
   ${flex}
   width: ${({ width }) => (width ? width : '')};
+  position: relative;
+  a {
+    &:hover {
+      color: ${({ theme }) => theme.colors.moneyRose};
+    }
+  }
 `;
 
 export const LogoContainer = styled.div`
@@ -23,6 +32,10 @@ export const Form = styled.form`
   width: 28rem;
   padding: 2rem;
   border-radius: 1rem;
+  //media query
+  @media (max-width: ${size.mobileM}) {
+    width: 25rem;
+  }
 `;
 
 export const Input = styled.input`
