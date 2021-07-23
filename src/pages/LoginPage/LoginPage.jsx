@@ -1,10 +1,11 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+
 //Components
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Logo from '../../img/money-tree9.png';
 import userService from '../../utils/userService';
-import Btn from '../../components/Button/Button';
+import Btn from '../../components/Form/Button/Button';
 
 //Styles
 import {
@@ -12,11 +13,11 @@ import {
   LogoContainer,
   Image,
   Container,
-  Form,
-  Input,
   SignUp,
 } from './LoginPage.styles';
-import { Header3, Header1, Small } from '../../styles/type';
+import { Header3, Header1 } from '../../styles/type';
+import { Input } from '../../components/Form/Input/Input.styles';
+import { Form } from '../../components/Form/Form/Form.styles';
 
 export default function LoginPage(props) {
   const [invalidForm, setValidForm] = useState(false);
@@ -50,49 +51,47 @@ export default function LoginPage(props) {
   }
 
   return (
-    <Fragment>
-      <Wrapper>
-        <LogoContainer justify="center" direction="row">
-          <Header3 align="center">Money Tree </Header3>
-          <Image src={Logo} alt="money-tree-logo" />
-        </LogoContainer>
-        <Container>
-          <Header1>Log-in</Header1>
-        </Container>
+    <Wrapper>
+      <LogoContainer justify="center" direction="row">
+        <Header3 align="center">Tip Tree </Header3>
+        <Image src={Logo} alt="money-tree-logo" />
+      </LogoContainer>
+      <Container>
+        <Header1>Log-in</Header1>
+      </Container>
 
-        <Form autoComplete="off" onSubmit={handleSubmit}>
-          <Input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={state.email}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={state.password}
-            onChange={handleChange}
-            required
-          />
-          <Btn
-            primary
-            width="50%"
-            type="submit"
-            label="Login"
-            disabled={invalidForm}
-          />
-        </Form>
-        {error ? <ErrorMessage error={error} /> : null}
-        <Container justify="space-between" direction="row">
-          <SignUp>New To Us</SignUp>
-          <Link to="/signup">
-            <SignUp>Sign Up</SignUp>
-          </Link>
-        </Container>
-      </Wrapper>
-    </Fragment>
+      <Form autoComplete="off" onSubmit={handleSubmit}>
+        <Input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={state.email}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={state.password}
+          onChange={handleChange}
+          required
+        />
+        <Btn
+          primary
+          width="50%"
+          type="submit"
+          label="Login"
+          disabled={invalidForm}
+        />
+      </Form>
+      {error ? <ErrorMessage error={error} /> : null}
+      <Container justify="space-between" direction="row">
+        <SignUp>New To Us</SignUp>
+        <Link to="/signup">
+          <SignUp>Sign Up</SignUp>
+        </Link>
+      </Container>
+    </Wrapper>
   );
 }
