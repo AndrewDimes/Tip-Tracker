@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
-import './LoginPage.scss';
+import React, { useState, Fragment } from 'react';
+import { useHistory, Link } from 'react-router-dom';
+//Components
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Logo from '../../img/money-tree9.png';
 import userService from '../../utils/userService';
-import { useHistory, Link } from 'react-router-dom';
-import Btn from '../../components/Buttons/Btn';
+import Btn from '../../components/Button/Button';
+
+//Styles
+import {
+  Wrapper,
+  LogoContainer,
+  Image,
+  Container,
+  Form,
+  Input,
+  SignUp,
+} from './LoginPage.styles';
+import { Header3, Header1, Small } from '../../styles/type';
 
 export default function LoginPage(props) {
   const [invalidForm, setValidForm] = useState(false);
@@ -38,18 +50,18 @@ export default function LoginPage(props) {
   }
 
   return (
-    <>
-      <section className="login-page">
-        <div className="money-tree__logo">
-          <h3>Money Tree </h3>
-          <img src={Logo} alt="money-tree-logo" />
-        </div>
-        <div className="login-page__header">
-          <h1>Log-in</h1>
-        </div>
+    <Fragment>
+      <Wrapper>
+        <LogoContainer justify="center" direction="row">
+          <Header3 align="center">Money Tree </Header3>
+          <Image src={Logo} alt="money-tree-logo" />
+        </LogoContainer>
+        <Container>
+          <Header1>Log-in</Header1>
+        </Container>
 
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <input
+        <Form autoComplete="off" onSubmit={handleSubmit}>
+          <Input
             type="email"
             name="email"
             placeholder="Email"
@@ -57,7 +69,7 @@ export default function LoginPage(props) {
             onChange={handleChange}
             required
           />
-          <input
+          <Input
             type="password"
             name="password"
             placeholder="Password"
@@ -65,22 +77,22 @@ export default function LoginPage(props) {
             onChange={handleChange}
             required
           />
-          <Btn type="submit" label="Login" disabled={invalidForm} />
-          {/* <button type="submit" className="btn" disabled={invalidForm}>
-            Login
-          </button> */}
-        </form>
+          <Btn
+            primary
+            width="50%"
+            type="submit"
+            label="Login"
+            disabled={invalidForm}
+          />
+        </Form>
         {error ? <ErrorMessage error={error} /> : null}
-        <small>
-          New to us?{' '}
+        <Container justify="space-between" direction="row">
+          <SignUp>New To Us</SignUp>
           <Link to="/signup">
-            <span>Sign Up</span>
+            <SignUp>Sign Up</SignUp>
           </Link>
-        </small>
-        {/* <Message>
-          New to us? <Link to="/signup">Sign Up</Link>
-        </Message> */}
-      </section>
-    </>
+        </Container>
+      </Wrapper>
+    </Fragment>
   );
 }
