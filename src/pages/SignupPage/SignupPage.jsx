@@ -9,19 +9,23 @@ import './SignupPage.scss';
 import Logo from '../../img/money-tree9.png';
 import MoneyJar from '../../img/Money-Jar.svg';
 //Styles
-import { Wrap, VectorImage } from './SignupPage.styles';
 import {
+  Wrap,
+  VectorImage,
   Wrapper,
   LogoContainer,
   Image,
   Container,
   SignUp,
-} from '../LoginPage/LoginPage.styles';
+  SUHeader1,
+  SUHeader2,
+  SUHeader3,
+  SUParagraph,
+} from './SignupPage.styles';
+
 import { Input } from '../../components/Form/Input/Input.styles';
 import { Form } from '../../components/Form/Form/Form.styles';
-import { Header3, Header2, Header1, Paragraph } from '../../styles/type';
 import Btn from '../../components/Form/Button/Button';
-import { ThemeConsumer } from 'styled-components';
 
 export default function SignUpPage(props) {
   const [invalidForm, setValidForm] = useState(false);
@@ -62,12 +66,12 @@ export default function SignUpPage(props) {
       <Wrapper direction="row">
         <Wrap width="39vw">
           <LogoContainer justify="center" direction="row">
-            <Header3>Money Tree</Header3>
+            <SUHeader3>Money Tree</SUHeader3>
             <Image src={Logo} alt="money-tree-logo" />
           </LogoContainer>
 
           <Container>
-            <Header1>Sign Up</Header1>
+            <SUHeader1>Sign Up</SUHeader1>
           </Container>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Input
@@ -117,20 +121,20 @@ export default function SignUpPage(props) {
             </Link>
           </Container>
         </Wrap>
-        <Wrap bgColor="#3D44AE" width="61vw">
+        <Wrap noMobile bgColor="#3D44AE" width="61vw">
           <Container direction="row" justify="space-around">
-            <VectorImage src={MoneyJar} alt="money-jar" />
+            <VectorImage noMobile src={MoneyJar} alt="money-jar" />
             <Container justify="left" width="30%">
-              <Header2>
+              <SUHeader2>
                 Track your income and take better control of your finances.
-              </Header2>
+              </SUHeader2>
 
-              <Paragraph style={{ marginTop: '2rem', fontSize: '1.25rem' }}>
+              <SUParagraph>
                 If your primary source of income is tips, financial planning can
                 be challenging. <span>TipTree</span> is a simple, intuitive and
                 free tool for you to track how much money you make to help you
                 improve your financial life
-              </Paragraph>
+              </SUParagraph>
             </Container>
           </Container>
         </Wrap>
