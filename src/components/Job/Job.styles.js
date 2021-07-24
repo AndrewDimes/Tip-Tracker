@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 import { flex } from '../../styles/mixins';
+import { size } from '../../styles/mediaQueries';
 
 export const Wrapper = styled.div`
   ${flex}
   margin-bottom: 1rem;
+  @media (max-width: ${size.mobileL}) {
+    width: 100vw;
+    padding: 0rem 2rem;
+  }
 `;
 
 export const Delete = styled.div`
@@ -17,6 +22,11 @@ export const Delete = styled.div`
   transition: background-color 0.2s ease;
   &:hover {
     background-color: ${({ theme }) => theme.colors.moneyRose};
+  }
+  @media (max-width: ${size.mobileL}) {
+    width: 25rem;
+    height: calc(10rem / 1.2);
+    width: calc(7.75rem / 1.2);
   }
 `;
 
@@ -35,6 +45,11 @@ export const JobContainer = styled.div`
   }
   &:hover {
     background-color: #12151f;
+  }
+  @media (max-width: ${size.mobileL}) {
+    width: 25rem;
+    height: calc(10rem / 1.2);
+    width: calc(30rem / 1.2);
   }
 `;
 
