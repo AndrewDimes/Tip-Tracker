@@ -16,6 +16,7 @@ export const Delete = styled.div`
   border-radius: 10px;
   height: 10rem;
   width: 7.75rem;
+  color: white;
   ${flex};
   margin-left: 1rem;
   cursor: pointer;

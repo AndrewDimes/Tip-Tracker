@@ -45,8 +45,10 @@ const Job = ({ company, title, deleteJob, id, goToJob, updated }) => {
         </Icon>
 
         <JobDetails justify="space-around">
-          <Header3 style={{ textTransform: 'capitalize' }}>{company}</Header3>
-          <Small fontSize="1.25rem" style={{ textTransform: 'capitalize' }}>
+          <Header3 weight="900" style={{ textTransform: 'capitalize' }}>
+            {company}
+          </Header3>
+          <Small fontSize="1.5rem" style={{ textTransform: 'capitalize' }}>
             {title}
           </Small>
           <Small

@@ -9,6 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+//Components
 import Header from '../../components/Header/Header';
 import { useHistory } from 'react-router-dom';
 import jobService from '../../utils/jobService';
@@ -18,10 +19,13 @@ import WageDetail from '../../components/Wage/WageDetail';
 import WageChart from '../../components/Wage/WageChart';
 import Calendar from 'react-calendar';
 import Btn from '../../components/Buttons/Btn';
+
+//Styles
 import './JobPage.scss';
 import './Calender.scss';
-
-import { Message } from 'semantic-ui-react';
+import { Container, Wrapper } from './JobPage.styles';
+import { Header3 } from '../../styles/type';
+import Button from '../../components/Form/Button/Button';
 
 const JobPage = ({ handleLogOut }) => {
   const [error, setError] = useState('');
@@ -42,7 +46,7 @@ const JobPage = ({ handleLogOut }) => {
   const [yearView, setYearView] = useState(false);
   const [data, setData] = useState([]);
   const [submitMsg, setSubmitMsg] = useState(false);
-  const [dateValue, setDateValue] = useState(null)
+  const [dateValue, setDateValue] = useState(null);
 
   async function getJob() {
     try {
@@ -84,14 +88,17 @@ const JobPage = ({ handleLogOut }) => {
     month[10] = 'Oct';
     month[11] = 'Nov';
     month[12] = 'Dec';
-    const sortedData = wageData.wages.sort((a,b) => new Date(b.date) < new Date(a.date) ? 1: -1)
-    const wage = wageData.wages.sort((a,b) => b.date - a.date)
-    .map((wage, index) => ({
-      name: month[wage.date.slice(6, 7)] + ' ' + wage.date.slice(8, 10),
-      wage: wage.wage * wage.hours,
-      tips: wage.tips,
-      total: wage.tips + wage.wage * wage.hours,
-    }));
+    const sortedData = wageData.wages.sort((a, b) =>
+      new Date(b.date) < new Date(a.date) ? 1 : -1
+    );
+    const wage = wageData.wages
+      .sort((a, b) => b.date - a.date)
+      .map((wage, index) => ({
+        name: month[wage.date.slice(6, 7)] + ' ' + wage.date.slice(8, 10),
+        wage: wage.wage * wage.hours,
+        tips: wage.tips,
+        total: wage.tips + wage.wage * wage.hours,
+      }));
     setData(wage);
   }
   useEffect(() => {
@@ -222,28 +229,32 @@ const JobPage = ({ handleLogOut }) => {
           {logIncome ? (
             ''
           ) : (
-            <div className="job-page__item-container">
-              <div className="job-page__item">
-                <h1 className="job-page__header">Just finished work?</h1>
+            <Wrapper justify="space-between">
+              <Container>
+                <Header3 style={{ marginBottom: '2rem' }}>
+                  Just finished work?
+                </Header3>
                 <span
                   onClick={() => {
                     setLogIncome(true);
                   }}
                 >
-                  <Btn label="Log Income" />
+                  <Button label="Log Income" />
                 </span>
-              </div>
-              <div className="job-page__item">
-                <h1 className="job-page__header">How much have you earned?</h1>
+              </Container>
+              <Container>
+                <Header3 style={{ marginBottom: '2rem' }}>
+                  How much have you earned?
+                </Header3>
                 <span
                   onClick={() => {
                     setViewIncome(true);
                   }}
                 >
-                  <Btn label="View Income" />
+                  <Button label="View Income" />
                 </span>
-              </div>
-            </div>
+              </Container>
+            </Wrapper>
           )}
           {logIncome ? <Calendar onChange={onChange} value={value} /> : ''}
           <br />
@@ -253,7 +264,7 @@ const JobPage = ({ handleLogOut }) => {
                 setWageFormView(true);
               }}
             >
-              <Btn label="Enter" />{' '}
+              <Button label="Enter" />
             </span>
           ) : (
             ''
@@ -272,7 +283,10 @@ const JobPage = ({ handleLogOut }) => {
               setWageFormView(false);
             }}
           />
-          <WageForm wageFormSubmit={wageFormSubmit} dateValue={value.toString()} />
+          <WageForm
+            wageFormSubmit={wageFormSubmit}
+            dateValue={value.toString()}
+          />
         </>
       );
     }
@@ -288,10 +302,6 @@ const JobPage = ({ handleLogOut }) => {
           jobSwitch={jobSwitch}
           jobPage={true}
         />
-        <br></br>
-        <br />
-        <br />
-        <br />
         <WageChart data={data} />
         <WageDetail
           monday={monday}
@@ -304,9 +314,6 @@ const JobPage = ({ handleLogOut }) => {
           monthView={monthView}
           yearView={yearView}
         />
-        <br></br>
-        <br />
-        <br />
       </>
     );
   }

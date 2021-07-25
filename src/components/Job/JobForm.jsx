@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import './JobForm.scss';
-import Btn from '../Buttons/Btn';
 
 //Styles
 import { Input } from '../../components/Form/Input/Input.styles';
