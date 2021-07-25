@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Header.scss';
+
 //Icons
 import PlaylistAddOutlinedIcon from '@material-ui/icons/PlaylistAddOutlined';
 import { BsArrowLeft } from 'react-icons/bs';
@@ -33,7 +33,7 @@ const Header = ({
   if (jobPage) {
     return (
       <Wrapper direction="row" showHeader={showHeader}>
-        <h3 className="header-container">
+        <HeaderContainer justify="space-between" direction="row">
           <Button onClick={handleLogOut}>
             <ExitToAppOutlinedIcon style={{ fontSize: '3rem' }} />
           </Button>
@@ -43,7 +43,7 @@ const Header = ({
           <Button onClick={goBack}>
             <BsArrowLeft style={{ fontSize: '3rem' }} />
           </Button>
-        </h3>
+        </HeaderContainer>
       </Wrapper>
     );
   } else {

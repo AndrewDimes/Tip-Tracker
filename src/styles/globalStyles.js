@@ -22,10 +22,11 @@ body {
   background-color: #080a11;
   background-size: cover;
   height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  color: white;
+  color: #fff;
 }
 `;
