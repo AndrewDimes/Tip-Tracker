@@ -229,7 +229,7 @@ const JobPage = ({ handleLogOut }) => {
           {logIncome ? (
             ''
           ) : (
-            <Wrapper justify="space-between">
+            <Wrapper justify="left">
               <Container>
                 <Header3 style={{ marginBottom: '2rem' }}>
                   Just finished work?
