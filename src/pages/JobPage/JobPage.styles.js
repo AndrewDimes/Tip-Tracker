@@ -19,3 +19,8 @@ export const Container = styled.div`
     background-color: #12151f;
   }
 `;
+
+export const WageChartContainer = styled.div`
+  width: 650px;
+  height: 300px;
+`;
