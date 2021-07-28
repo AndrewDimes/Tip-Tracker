@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   LineChart,
   Line,
@@ -11,19 +12,17 @@ import {
 } from 'recharts';
 //Components
 import Header from '../../components/Header/Header';
-import { useHistory } from 'react-router-dom';
 import jobService from '../../utils/jobService';
 import wageService from '../../utils/wageService';
 import WageForm from '../../components/Wage/WageForm';
 import WageDetail from '../../components/Wage/WageDetail';
 import WageChart from '../../components/Wage/WageChart';
 import Calendar from 'react-calendar';
-import Btn from '../../components/Buttons/Btn';
 
 //Styles
 import './JobPage.scss';
 import './Calender.scss';
-import { Container, Wrapper } from './JobPage.styles';
+import { Container, Wrapper, WageChartContainer } from './JobPage.styles';
 import { Header3 } from '../../styles/type';
 import Button from '../../components/Form/Button/Button';
 
@@ -302,7 +301,10 @@ const JobPage = ({ handleLogOut }) => {
           jobSwitch={jobSwitch}
           jobPage={true}
         />
-        <WageChart data={data} />
+        <WageChartContainer >
+          <WageChart data={data} />
+        </WageChartContainer>
+
         <WageDetail
           monday={monday}
           sunday={sunday}

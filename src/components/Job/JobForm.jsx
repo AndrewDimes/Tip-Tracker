@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Input } from '../../components/Form/Input/Input.styles';
 import Button from '../../components/Form/Button/Button';
 import { Container, Form } from './JobForm.styles';
+import { Header3 } from '../../styles/type';
 
 const JobForm = ({ handleSubmit }) => {
   const [error, setError] = useState('');
@@ -20,6 +21,7 @@ const JobForm = ({ handleSubmit }) => {
 
   return (
     <Container>
+      <Header3>Enter Job Details</Header3>
       <Form>
         <Container>
           <Input
