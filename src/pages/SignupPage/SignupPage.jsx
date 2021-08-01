@@ -1,15 +1,31 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useHistory, Link } from 'react-router-dom';
+
+//Components
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import userService from '../../utils/userService';
-import { useHistory, Link } from 'react-router-dom';
 import './SignupPage.scss';
+//Images
 import Logo from '../../img/money-tree9.png';
 import MoneyJar from '../../img/Money-Jar.svg';
-import Money from '../../img/Money.svg';
+//Styles
+import {
+  Wrap,
+  VectorImage,
+  Wrapper,
+  LogoContainer,
+  Image,
+  Container,
+  SignUp,
+  SUHeader1,
+  SUHeader2,
+  SUHeader3,
+  SUParagraph,
+} from './SignupPage.styles';
 
-import Btn from '../../components/Buttons/Btn';
-
-import { gsap } from 'gsap';
+import { Input } from '../../components/Form/Input/Input.styles';
+import { Form } from '../../components/Form/Form/Form.styles';
+import Btn from '../../components/Form/Button/Button';
 
 export default function SignUpPage(props) {
   const [invalidForm, setValidForm] = useState(false);
@@ -45,97 +61,84 @@ export default function SignUpPage(props) {
     }
   }
 
-  // animations
-
-  let img1 = useRef(null);
-  let img2 = useRef(null);
-
-  // animations
-
   return (
     <>
-      <section className="signup-page">
-        <div className="signup-page__left">
-          <div className="money-tree__logo">
-            <h3>Money Tree </h3>
-            <img src={Logo} alt="money-tree-logo" />
-          </div>
-          <div className="signup-page__form-container">
-            <div className="signup-page__header">
-              <h1>Sign Up</h1>
-            </div>
-            <form autoComplete="off" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={state.username}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={state.email}
-                onChange={handleChange}
-                required
-              />
-              <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                value={state.password}
-                onChange={handleChange}
-                required
-              />
-              <input
-                name="passwordConf"
-                type="password"
-                placeholder="Confirm Password"
-                value={state.passwordConf}
-                onChange={handleChange}
-                required
-              />
-              <Btn
-                className="btn"
-                type="submit"
-                label="Sign up"
-                disabled={invalidForm}
-              />
+      <Wrapper direction="row">
+        <Wrap width="39vw">
+          <LogoContainer justify="center" direction="row">
+            <SUHeader3>Money Tree</SUHeader3>
+            <Image src={Logo} alt="money-tree-logo" />
+          </LogoContainer>
 
-              {error ? <ErrorMessage error={error} /> : null}
-              <small>
-                Already have an account?{' '}
-                <Link to="/login">
-                  {' '}
-                  <span>Log in</span>
-                </Link>
-              </small>
-            </form>
-          </div>
-        </div>
-        <div className="signup-page__right">
-          <div className="signup-page__right-info">
-            <div className="signup-page__right-img">
-              <img src={MoneyJar} alt="money-jar" />
-            </div>
-            <div className="signup-page__right-head">
-              <h1>
+          <Container>
+            <SUHeader1>Sign Up</SUHeader1>
+          </Container>
+          <Form autoComplete="off" onSubmit={handleSubmit}>
+            <Input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={state.username}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={state.email}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={state.password}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              name="passwordConf"
+              type="password"
+              placeholder="Confirm Password"
+              value={state.passwordConf}
+              onChange={handleChange}
+              required
+            />
+            <Btn
+              width="100%"
+              type="submit"
+              label="Sign up"
+              disabled={invalidForm}
+            />
+          </Form>
+          {error ? <ErrorMessage error={error} /> : null}
+          <Container justify="space-between" direction="row">
+            <SignUp>Already have an account?</SignUp>
+            <Link to="/login">
+              <SignUp>Log in</SignUp>
+            </Link>
+          </Container>
+        </Wrap>
+        <Wrap noMobile bgColor="#3D44AE" width="61vw">
+          <Container direction="row" justify="space-around">
+            <VectorImage noMobile src={MoneyJar} alt="money-jar" />
+            <Container justify="left" width="30%">
+              <SUHeader2>
                 Track your income and take better control of your finances.
-              </h1>
-            </div>
-            <div className="signup-page__right-paragraph">
-              <p>
+              </SUHeader2>
+
+              <SUParagraph>
                 If your primary source of income is tips, financial planning can
                 be challenging. <span>TipTree</span> is a simple, intuitive and
                 free tool for you to track how much money you make to help you
                 improve your financial life
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+              </SUParagraph>
+            </Container>
+          </Container>
+        </Wrap>
+      </Wrapper>
     </>
   );
 }

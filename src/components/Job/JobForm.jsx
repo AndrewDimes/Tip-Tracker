@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import './JobForm.scss';
-import JobFormSplash from '../../svg/undraw_make_it_rain_iwk4.svg';
-import Btn from '../Buttons/Btn';
-import AddNotes from '../../svg/undraw_Add_notes_re_ln36.svg';
-import jobService from '../../utils/jobService';
-import { useHistory } from 'react-router-dom';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+
+//Styles
+import { Input } from '../../components/Form/Input/Input.styles';
+import Button from '../../components/Form/Button/Button';
+import { Container, Form } from './JobForm.styles';
+import { Header3 } from '../../styles/type';
 
 const JobForm = ({ handleSubmit }) => {
   const [error, setError] = useState('');
@@ -21,29 +20,30 @@ const JobForm = ({ handleSubmit }) => {
   }
 
   return (
-    <div className="job-form">
-      <div className="job-form__field-container">
-        <div className="job-form__field">
-          <label>Company Name</label>
-          <input
+    <Container>
+      <Header3>Enter Job Details</Header3>
+      <Form>
+        <Container>
+          <Input
             placeholder="Enter Company Name"
             name="companyName"
             onChange={handleChange}
             type="text"
-          ></input>
-        </div>
-        <div className="job-form__field">
-          <label>Job Title</label>
-          <input
+          ></Input>
+        </Container>
+        <Container>
+          <Input
             placeholder="Enter Job Title"
             name="jobTitle"
             onChange={handleChange}
             type="text"
-          ></input>
-        </div>
-        <span onClick={() => handleSubmit(state)}><Btn label="Submit" /></span>
-      </div>
-    </div>
+          ></Input>
+        </Container>
+        <span style={{ width: '100%' }} onClick={() => handleSubmit(state)}>
+          <Button label="Submit" />
+        </span>
+      </Form>
+    </Container>
   );
 };
 

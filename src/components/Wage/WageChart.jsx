@@ -13,7 +13,7 @@ import {
 
 const WageChart = ({ data }) => {
   return (
-    <ResponsiveContainer width="40%" height="30%">
+    <ResponsiveContainer width="100%" height="100%">
       <LineChart
         data={data}
         margin={{

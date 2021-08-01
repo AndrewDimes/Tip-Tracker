@@ -16,7 +16,7 @@ const WageDetail = ({
     monthView = true;
   }
   return (
-    <div className="wage-details" style={{ width: '40%' }}>
+    <div className="wage-details" style={{ width: '100%' }}>
       <div className="wage-details__header-buttons">
         <button onClick={() => theWageView('w')} className="ui button">
           Weekly
@@ -53,7 +53,10 @@ const WageDetail = ({
       <div class="ui middle aligned divided list">
         <div class="item">
           <div class="right floated content">
-            <div className="inputs"> {wageData.totalIncome ? wageData.totalIncome.toFixed(2): ''} </div>
+            <div className="inputs">
+              {' '}
+              {wageData.totalIncome ? wageData.totalIncome.toFixed(2) : ''}{' '}
+            </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             Total Income{' '}
@@ -61,7 +64,10 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div className="inputs"> {wageData.totalWages ? wageData.totalWages.toFixed(2) : ''} </div>
+            <div className="inputs">
+              {' '}
+              {wageData.totalWages ? wageData.totalWages.toFixed(2) : ''}{' '}
+            </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             {' '}
@@ -70,7 +76,10 @@ const WageDetail = ({
         </div>
         <div class="item">
           <div class="right floated content">
-            <div className="inputs"> {wageData.totalTips ? wageData.totalTips.toFixed(2) : ''}</div>
+            <div className="inputs">
+              {' '}
+              {wageData.totalTips ? wageData.totalTips.toFixed(2) : ''}
+            </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
             {' '}
