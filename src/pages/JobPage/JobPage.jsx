@@ -1,15 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
 //Components
 import Header from '../../components/Header/Header';
 import jobService from '../../utils/jobService';
@@ -45,7 +34,6 @@ const JobPage = ({ handleLogOut }) => {
   const [yearView, setYearView] = useState(false);
   const [data, setData] = useState([]);
   const [submitMsg, setSubmitMsg] = useState(false);
-  const [dateValue, setDateValue] = useState(null);
 
   async function getJob() {
     try {
@@ -74,7 +62,7 @@ const JobPage = ({ handleLogOut }) => {
   }
 
   async function getGraphData() {
-    const month = new Array();
+    const month = [];
     month[1] = 'Jan';
     month[2] = 'Feb';
     month[3] = 'Mar';
@@ -87,9 +75,6 @@ const JobPage = ({ handleLogOut }) => {
     month[10] = 'Oct';
     month[11] = 'Nov';
     month[12] = 'Dec';
-    const sortedData = wageData.wages.sort((a, b) =>
-      new Date(b.date) < new Date(a.date) ? 1 : -1
-    );
     const wage = wageData.wages
       .sort((a, b) => b.date - a.date)
       .map((wage, index) => ({
@@ -103,6 +88,7 @@ const JobPage = ({ handleLogOut }) => {
   useEffect(() => {
     getJob();
   }, [jobSwitch]);
+
   useEffect(() => {
     if (wageData.wages) {
       if (wageData.wages.length > 0) {
@@ -110,6 +96,7 @@ const JobPage = ({ handleLogOut }) => {
       }
     }
   }, [wageData]);
+  
   useEffect(() => {
     getWages();
     getDate();

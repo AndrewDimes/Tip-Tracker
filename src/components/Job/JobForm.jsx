@@ -7,7 +7,6 @@ import { Container, Form } from './JobForm.styles';
 import { Header3 } from '../../styles/type';
 
 const JobForm = ({ handleSubmit }) => {
-  const [error, setError] = useState('');
   const [state, setState] = useState({
     companyName: '',
     jobTitle: '',

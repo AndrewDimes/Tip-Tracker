@@ -3,7 +3,6 @@ import './WageForm.scss';
 import Btn from '../Buttons/Btn';
 
 const WageForm = ({ wageFormSubmit, dateValue }) => {
-  const [error, setError] = useState('');
   const [state, setState] = useState({
     wage: null,
     tips: null,
