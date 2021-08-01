@@ -21,7 +21,6 @@ function createWage(body,id){
     .then(({ token }) => tokenService.setToken(token));
 }
 function getWages(id, viewBy){
-  console.log(viewBy, 'in wage service')
   return fetch(BASE_URL + 'getWages/' + id + '/' + viewBy, {
     method: 'GET',
     headers: {

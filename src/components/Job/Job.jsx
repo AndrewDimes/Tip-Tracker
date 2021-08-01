@@ -7,7 +7,6 @@ import { Wrapper, JobContainer, Icon, JobDetails, Delete } from './Job.styles';
 import { Header3, Small } from '../../styles/type';
 
 const Job = ({ company, title, deleteJob, id, goToJob, updated }) => {
-  console.log(updated.slice(0, 4));
   let month;
   if (updated.slice(5, 7) === '01') {
     month = 'January';
