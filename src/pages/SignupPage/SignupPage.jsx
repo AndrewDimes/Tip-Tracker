@@ -66,7 +66,7 @@ export default function SignUpPage(props) {
       <Wrapper direction="row">
         <Wrap width="39vw">
           <LogoContainer justify="center" direction="row">
-            <SUHeader3>Money Tree</SUHeader3>
+            <SUHeader3>Tip Tree</SUHeader3>
             <Image src={Logo} alt="money-tree-logo" />
           </LogoContainer>
 

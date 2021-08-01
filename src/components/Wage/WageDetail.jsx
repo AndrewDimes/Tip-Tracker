@@ -55,7 +55,7 @@ const WageDetail = ({
           <div class="right floated content">
             <div className="inputs">
               {' '}
-              {wageData.totalIncome ? wageData.totalIncome.toFixed(2) : ''}{' '}
+              {wageData.totalIncome ? wageData.totalIncome.toFixed(2) : '0.00'}{' '}
             </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
@@ -66,7 +66,7 @@ const WageDetail = ({
           <div class="right floated content">
             <div className="inputs">
               {' '}
-              {wageData.totalWages ? wageData.totalWages.toFixed(2) : ''}{' '}
+              {wageData.totalWages ? wageData.totalWages.toFixed(2) : '0.00'}{' '}
             </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
@@ -78,7 +78,7 @@ const WageDetail = ({
           <div class="right floated content">
             <div className="inputs">
               {' '}
-              {wageData.totalTips ? wageData.totalTips.toFixed(2) : ''}
+              {wageData.totalTips ? wageData.totalTips.toFixed(2) : '0.00'}
             </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
@@ -100,7 +100,7 @@ const WageDetail = ({
               {' '}
               {wageData.averageIncome
                 ? wageData.averageIncome.toFixed(2) + '/hr'
-                : ''}{' '}
+                : '0.00'}{' '}
             </div>
           </div>
           <div class="left floated content" style={{ color: 'white' }}>
