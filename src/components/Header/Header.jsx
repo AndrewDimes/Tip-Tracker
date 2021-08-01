@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './Header.scss';
+
+//Icons
 import PlaylistAddOutlinedIcon from '@material-ui/icons/PlaylistAddOutlined';
 import { BsArrowLeft } from 'react-icons/bs';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+//Styles
+import { Wrapper, HeaderContainer, Button } from './Header.styles';
+import { Header3 } from '../../styles/type';
 
 const Header = ({
   addJob,
@@ -28,42 +32,41 @@ const Header = ({
 
   if (jobPage) {
     return (
-      <section className={showHeader ? 'header header-scroll' : 'header'}>
-        <h3 className="header-container">
-          <button onClick={handleLogOut} class="header__button">
-            <ExitToAppOutlinedIcon style={{ fontSize: 32 }} />
-          </button>
-          <span className="header-span">
+      <Wrapper direction="row" showHeader={showHeader}>
+        <HeaderContainer justify="space-between" direction="row">
+          <Button onClick={handleLogOut}>
+            <ExitToAppOutlinedIcon style={{ fontSize: '3rem' }} />
+          </Button>
+          <Header3 style={{ textTransform: 'capitalize' }}>
             {jobSwitch ? job.job.companyName : ''}
-          </span>
-          <button onClick={goBack} class="header__button">
-            <BsArrowLeft className="icon" />
-          </button>
-        </h3>
-      </section>
+          </Header3>
+          <Button onClick={goBack}>
+            <BsArrowLeft style={{ fontSize: '3rem' }} />
+          </Button>
+        </HeaderContainer>
+      </Wrapper>
     );
   } else {
     return (
-      <section className={showHeader ? 'header header-scroll' : 'header'}>
-        <div className="header-container">
-          <button onClick={handleLogOut} class="header__button">
-            <ExitToAppOutlinedIcon style={{ fontSize: 32 }} />
-          </button>
-          <span className="header-span">
+      <Wrapper direction="row" showHeader={showHeader}>
+        <HeaderContainer justify="space-between" direction="row">
+          <Button onClick={handleLogOut}>
+            <ExitToAppOutlinedIcon style={{ fontSize: '3rem' }} />
+          </Button>
+          <Header3 style={{ textTransform: 'capitalize' }}>
             {jobForm ? 'Add a job' : 'Select a job'}
-          </span>
+          </Header3>
           {jobForm ? (
-            <button onClick={goBack} class="header__button">
-              <BsArrowLeft className="icon" />
-            </button>
+            <Button onClick={goBack}>
+              <BsArrowLeft style={{ fontSize: '3rem' }} />
+            </Button>
           ) : (
-            <button onClick={addJob} class="header__button">
-              {' '}
-              <PlaylistAddOutlinedIcon className="icon" />{' '}
-            </button>
+            <Button onClick={addJob}>
+              <PlaylistAddOutlinedIcon style={{ fontSize: '3rem' }} />
+            </Button>
           )}
-        </div>
-      </section>
+        </HeaderContainer>
+      </Wrapper>
     );
   }
 };

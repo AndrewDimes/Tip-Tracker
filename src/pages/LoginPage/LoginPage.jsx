@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
-import './LoginPage.scss';
+import { useHistory, Link } from 'react-router-dom';
+
+//Components
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Logo from '../../img/money-tree9.png';
 import userService from '../../utils/userService';
-import { useHistory, Link } from 'react-router-dom';
-import Btn from '../../components/Buttons/Btn';
+import Btn from '../../components/Form/Button/Button';
+
+//Styles
+import {
+  Wrapper,
+  LogoContainer,
+  Image,
+  Container,
+  SignUp,
+} from './LoginPage.styles';
+import { Header3, Header1 } from '../../styles/type';
+import { Input } from '../../components/Form/Input/Input.styles';
+import { Form } from '../../components/Form/Form/Form.styles';
 
 export default function LoginPage(props) {
   const [invalidForm, setValidForm] = useState(false);
@@ -38,49 +51,47 @@ export default function LoginPage(props) {
   }
 
   return (
-    <>
-      <section className="login-page">
-        <div className="money-tree__logo">
-          <h3>Money Tree </h3>
-          <img src={Logo} alt="money-tree-logo" />
-        </div>
-        <div className="login-page__header">
-          <h1>Log-in</h1>
-        </div>
+    <Wrapper>
+      <LogoContainer justify="center" direction="row">
+        <Header3 align="center">Tip Tree </Header3>
+        <Image src={Logo} alt="money-tree-logo" />
+      </LogoContainer>
+      <Container>
+        <Header1>Log-in</Header1>
+      </Container>
 
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={state.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={state.password}
-            onChange={handleChange}
-            required
-          />
-          <Btn type="submit" label="Login" disabled={invalidForm} />
-          {/* <button type="submit" className="btn" disabled={invalidForm}>
-            Login
-          </button> */}
-        </form>
-        {error ? <ErrorMessage error={error} /> : null}
-        <small>
-          New to us?{' '}
-          <Link to="/signup">
-            <span>Sign Up</span>
-          </Link>
-        </small>
-        {/* <Message>
-          New to us? <Link to="/signup">Sign Up</Link>
-        </Message> */}
-      </section>
-    </>
+      <Form autoComplete="off" onSubmit={handleSubmit}>
+        <Input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={state.email}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={state.password}
+          onChange={handleChange}
+          required
+        />
+        <Btn
+          primary
+          width="50%"
+          type="submit"
+          label="Login"
+          disabled={invalidForm}
+        />
+      </Form>
+      {error ? <ErrorMessage error={error} /> : null}
+      <Container justify="space-between" direction="row">
+        <SignUp>New To Us</SignUp>
+        <Link to="/signup">
+          <SignUp>Sign Up</SignUp>
+        </Link>
+      </Container>
+    </Wrapper>
   );
 }
