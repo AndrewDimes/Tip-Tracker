@@ -260,7 +260,9 @@ const JobPage = ({ handleLogOut }) => {
           jobPage={true}
         /> 
         <br></br><br /><br /><br />
+        <div style={{ width: '1100px', height : '400px'}}>
         <WageChart data={data} />
+        </div>
         <WageDetail
           monday={monday}
           sunday={sunday}
