@@ -12,6 +12,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover {
-    background-color: $neon-02-22-hex;
+    background-color: $neon-02-3-hex;
+    border: 1px solid $neon-02-3-hex;
   }
 }

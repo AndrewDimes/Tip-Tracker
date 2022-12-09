@@ -23,7 +23,7 @@
 
     &:hover .job-item__icon-icon {
       transform-origin: center;
-      color: rgb(27, 220, 20);
+      color: $tip-green;
     }
 
     .job-item__icon-icon {
@@ -75,7 +75,7 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
     &:hover {
-      background-color: rgb(179, 0, 36);
+      background-color: $money-rose;
     }
   }
 }

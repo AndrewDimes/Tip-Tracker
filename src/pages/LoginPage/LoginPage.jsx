@@ -41,6 +41,7 @@ export default function LoginPage(props) {
     <>
       <section className="login-page">
         <div className="login-page__header">
+          <img src={Logo} alt="" />
           <h1>Log-in</h1>
         </div>
 
