@@ -88,3 +88,9 @@
     font-size: 16px;
   }
 }
+@media (max-width: 600px) {
+  .react-calendar{
+      width: 100%;
+      margin-top: 10%;
+  }
+}

@@ -3,7 +3,7 @@
 
 .wage__form {
   @include flex(column, center);
-  width: 554px;
+  width: 100%;
   padding: 2rem;
   border-radius: 10px;
   h1 {
@@ -30,4 +30,14 @@
   .wage__form-button {
     margin-top: 2rem;
   }
+}
+
+@media (max-width: 1250px) {
+  .wage__form{
+    width: 100%;
+
+    h1{
+      font-size: 2rem;
+    }
+    }
 }

@@ -30,8 +30,8 @@ export const Wrap = styled.div`
   height: 100vh;
   background-color: ${({ bgColor }) => (bgColor ? bgColor : '')};
   @media (max-width: ${size.laptop}) {
-    width: 100vw;
-    height: 50vh;
+    ${({ noMobile }) => (noMobile ? 'display: none' : '')}
+
   }
   @media (max-width: ${size.tablet}) {
     ${({ noMobile }) => (noMobile ? 'display: none' : '')}

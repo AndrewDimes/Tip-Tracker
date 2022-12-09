@@ -6,12 +6,13 @@ import wageService from '../../utils/wageService';
 import WageForm from '../../components/Wage/WageForm';
 import WageDetail from '../../components/Wage/WageDetail';
 import WageChart from '../../components/Wage/WageChart';
+import WageChartMobile from '../../components/Wage/WageChartMobile';
 import Calendar from 'react-calendar';
 
 //Styles
 import './JobPage.scss';
 import './Calender.scss';
-import { Container, Wrapper, WageChartContainer } from './JobPage.styles';
+import { Container, Wrapper, WageChartContainer, WageChartContainerMobile } from './JobPage.styles';
 import { Header3 } from '../../styles/type';
 import Button from '../../components/Form/Button/Button';
 
@@ -288,10 +289,20 @@ const JobPage = ({ handleLogOut }) => {
           jobSwitch={jobSwitch}
           jobPage={true}
         />
+
+        <div className='WageChart'>
         <WageChartContainer >
           <WageChart data={data} />
         </WageChartContainer>
-
+        </div>
+        <div className='WageChart-Mobile'>
+        <WageChartContainerMobile >
+          <WageChartMobile data={data} />
+        </WageChartContainerMobile>
+        </div>
+        <br />
+        <br />
+        <br />
         <WageDetail
           monday={monday}
           sunday={sunday}

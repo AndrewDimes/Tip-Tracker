@@ -64,7 +64,7 @@ export default function SignUpPage(props) {
   return (
     <>
       <Wrapper direction="row">
-        <Wrap width="39vw">
+        <Wrap width="50vw">
           <LogoContainer justify="center" direction="row">
             <SUHeader3>Tip Tree</SUHeader3>
             <Image src={Logo} alt="money-tree-logo" />
@@ -121,10 +121,10 @@ export default function SignUpPage(props) {
             </Link>
           </Container>
         </Wrap>
-        <Wrap noMobile bgColor="#3D44AE" width="61vw">
+        <Wrap noMobile bgColor="#3D44AE" width="50vw">
           <Container direction="row" justify="space-around">
             <VectorImage noMobile src={MoneyJar} alt="money-jar" />
-            <Container justify="left" width="30%">
+            <Container justify="left" width="70%">
               <SUHeader2>
                 Track your income and take better control of your finances.
               </SUHeader2>
@@ -133,7 +133,7 @@ export default function SignUpPage(props) {
                 If your primary source of income is tips, financial planning can
                 be challenging. <span>TipTree</span> is a simple, intuitive and
                 free tool for you to track how much money you make to help you
-                improve your financial life
+                improve your financial life.
               </SUParagraph>
             </Container>
           </Container>

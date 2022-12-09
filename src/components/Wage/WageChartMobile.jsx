@@ -11,9 +11,9 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-const WageChart = ({ data }) => {
+const WageChartMobile = ({ data }) => {
   return (
-    <ResponsiveContainer width="116%" height="116%">
+    <ResponsiveContainer width="100%" height="100%">
       <LineChart
         data={data}
         margin={{
@@ -41,4 +41,4 @@ const WageChart = ({ data }) => {
   );
 };
 
-export default WageChart;
+export default WageChartMobile;

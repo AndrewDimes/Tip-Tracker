@@ -45,7 +45,7 @@ const WageForm = ({ wageFormSubmit, dateValue }) => {
 
   return (
     <div className="wage__form">
-      <h1>{theDate}</h1>
+      <h1 className='wage__date'>{theDate}</h1>
       <div className="wage__form-field">
         <label>Hourly Wage</label>
         <input

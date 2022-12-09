@@ -24,3 +24,7 @@ export const WageChartContainer = styled.div`
   width: 650px;
   height: 300px;
 `;
+
+export const WageChartContainerMobile = styled.div`
+height: 300px;
+`;

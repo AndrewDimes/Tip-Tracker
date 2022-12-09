@@ -48,4 +48,13 @@
   .item {
     margin-bottom: 0.5rem;
   }
+
+  @media (max-width: 1250px) {
+    .wage-details__date{
+      h1{
+        font-size: 1.5rem;
+      }
+      }
+  }
 }
+

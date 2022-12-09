@@ -1,6 +1,7 @@
 import React from 'react';
 import './WageDetails.scss';
 
+
 const WageDetail = ({
   wageData,
   theWageView,

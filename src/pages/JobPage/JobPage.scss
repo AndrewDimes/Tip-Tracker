@@ -57,3 +57,36 @@
   color: $tip-green;
   margin-bottom: 2rem;
 }
+
+.WageChart{
+  margin-top: 60%;
+  margin-left: -10%;
+}
+.WageChart-Mobile{
+  display: none;
+}
+
+
+
+@media (max-width: 1650px) {
+  .WageChart{
+      margin-top: 70%;
+  }
+}
+@media (max-width: 1250px) {
+  .WageChart{
+      margin-top: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .WageChart{
+      display: none;
+  }
+  .WageChart-Mobile{
+      display:block;
+      margin-top: 150%;
+      margin-bottom: -14%;
+
+  }
+}
