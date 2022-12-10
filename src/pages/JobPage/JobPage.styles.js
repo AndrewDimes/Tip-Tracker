@@ -4,7 +4,7 @@ import { flex } from '../../styles/mixins';
 export const Wrapper = styled.div`
   ${flex}
   width: 75rem;
-  height: 80vh;
+  height: 60vh;
   margin-top: 8vh;
 `;
 
