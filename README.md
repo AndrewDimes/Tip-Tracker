@@ -2,7 +2,7 @@
 
 TipTree is a web application designed to help tip-based workers keep track of their income and be more finacially responsible. As someone who's worked in the hospitality industry for most of my life, i've used many tip tracking tools in the past and have been disappointed in most. With our application, we set out to improve user experience and deliver a quality app for free. Unlike other free tip tracking applications TipTree allows users to track their income across multiple jobs. 
 
-![Home](public/home.png)
+![Home](public/homepage.png)
 
 
 ### Signup & Login
