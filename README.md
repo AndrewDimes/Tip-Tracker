@@ -62,5 +62,6 @@ Password - tester
 
 ### Future Features
 
+- I hope to improve the user experience greatly by making use of the empty space in some of the pages and displaying more useful data to users. 
 - While TipTree is currently mobile friendly I hope to improve the mobile experience of the website.
 - Get TipTree on the App store for iOS and Android.
