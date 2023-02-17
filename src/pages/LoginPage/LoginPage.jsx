@@ -20,6 +20,7 @@ import { Input } from '../../components/Form/Input/Input.styles';
 import { Form } from '../../components/Form/Form/Form.styles';
 
 export default function LoginPage(props) {
+  // Set state
   const [invalidForm, setValidForm] = useState(false);
   const [error, setError] = useState('');
   const [state, setState] = useState({
@@ -29,6 +30,7 @@ export default function LoginPage(props) {
 
   const history = useHistory();
 
+  // Handle input change and update state accordingly
   function handleChange(e) {
     setState({
       ...state,
@@ -36,14 +38,13 @@ export default function LoginPage(props) {
     });
   }
 
+  // Handle form submission
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
-      await userService.login(state);
-      // Route to wherever you want!
-      props.handleSignUpOrLogin();
-      history.push('/');
+      await userService.login(state); // Try to login with user input
+      props.handleSignUpOrLogin(); // Trigger parent component to update state
+      history.push('/'); // Navigate to home page
     } catch (err) {
       // Invalid user data (probably duplicate email)
       setError(err.message);

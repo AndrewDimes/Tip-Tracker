@@ -17,6 +17,7 @@ import { Header3 } from '../../styles/type';
 import Button from '../../components/Form/Button/Button';
 
 const JobPage = ({ handleLogOut }) => {
+  // Set state
   const [error, setError] = useState('');
   const [job, setJob] = useState({});
   const [jobSwitch, setJobSwitch] = useState(false);
@@ -38,12 +39,13 @@ const JobPage = ({ handleLogOut }) => {
 
   async function getJob() {
     try {
+      // Fetch job data from server
       const data = await jobService.getJob(
         window.location.pathname.substring(1)
       );
+      // Update state with job data
       setJob(data);
-      setJobSwitch(true);
-      // Route to wherever you want!
+      setJobSwitch(true);   
     } catch (err) {
       // Invalid user data (probably duplicate email)
       setError(err.message);
@@ -52,10 +54,12 @@ const JobPage = ({ handleLogOut }) => {
 
   async function getWages() {
     try {
+      // Fetch wages data from server
       const data = await wageService.getWages(
         window.location.pathname.substring(1),
         viewBy
       );
+      // Update state with wages data
       setWageData(data);
     } catch (err) {
       setError(err.message);
@@ -77,6 +81,7 @@ const JobPage = ({ handleLogOut }) => {
     month[11] = 'Nov';
     month[12] = 'Dec';
     console.log(wageData.wages.sort((a, b) => b.date - a.date))
+    // Sort wages by date and format for display
     const sortedData = wageData.wages.sort((a,b) => new Date(b.date) < new Date(a.date) ? 1: -1)
     const wage = wageData.wages
       .sort((a, b) => b.date - a.date)
@@ -86,12 +91,16 @@ const JobPage = ({ handleLogOut }) => {
         tips: wage.tips,
         total: wage.tips + wage.wage * wage.hours,
       }));
+    // Update state with formatted wage data
     setData(wage);
   }
+
+  // Run getJob function on page load and whenever jobSwitch state changes
   useEffect(() => {
     getJob();
   }, [jobSwitch]);
 
+  // Run the getGraphData function if there is wage data
   useEffect(() => {
     if (wageData.wages) {
       if (wageData.wages.length > 0) {
@@ -100,17 +109,20 @@ const JobPage = ({ handleLogOut }) => {
     }
   }, [wageData]);
   
+  // Run the getWages and getDate functions when viewBy changes
   useEffect(() => {
     getWages();
     getDate();
   }, [viewBy]);
 
+  // Hide the success message after 4 seconds when a user submits a wage form
   if (submitMsg) {
     setTimeout(() => {
       setSubmitMsg(false);
     }, 4000);
   }
 
+  // Submit the wage form and set state
   async function wageFormSubmit(wageInfo) {
     const info = {
       wage: wageInfo.wage,
@@ -120,7 +132,6 @@ const JobPage = ({ handleLogOut }) => {
     };
     try {
       await wageService.createWage(info, window.location.pathname.substring(1));
-      // Route to wherever you want!
       setLogIncome(false);
       setWageFormView(false);
       setJobSwitch(true);
@@ -135,6 +146,7 @@ const JobPage = ({ handleLogOut }) => {
     window.history.back();
   }
 
+  // Set the view based on the selected option(week,month,year) in income view
   function theWageView(select) {
     if (select === 'm') {
       setMonthView(true);
@@ -151,6 +163,7 @@ const JobPage = ({ handleLogOut }) => {
     }
     setViewBy(select);
   }
+
 
   function getDate() {
     const date = new Date(); // 2009-11-10
@@ -184,9 +197,10 @@ const JobPage = ({ handleLogOut }) => {
     setSunday(sundayFormatted);
   }
 
-  if (viewIncome !== true) {
-    if (wageFormView !== true) {
-      return (
+
+  if (viewIncome !== true) { // If user is not viewing income
+    if (wageFormView !== true) { // If user is not loggin income
+      return ( // display options log income/view income
         <>
           {logIncome ? (
             <Header
@@ -207,8 +221,7 @@ const JobPage = ({ handleLogOut }) => {
               goBack={goBack}
             />
           )}
-
-          {submitMsg ? (
+          {submitMsg ? ( // Displayed after user logs income
             <div className="submit-successful">
               Your form for has been submitted successfully!
             </div>
@@ -261,7 +274,7 @@ const JobPage = ({ handleLogOut }) => {
         </>
       );
     } else {
-      return (
+      return ( // User is logging income
         <>
           <Header
             handleLogOut={handleLogOut}
@@ -279,7 +292,7 @@ const JobPage = ({ handleLogOut }) => {
         </>
       );
     }
-  } else {
+  } else { // User is viewing income
     return (
       <>
         <Header

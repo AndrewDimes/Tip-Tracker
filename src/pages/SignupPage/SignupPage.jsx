@@ -28,6 +28,7 @@ import { Form } from '../../components/Form/Form/Form.styles';
 import Btn from '../../components/Form/Button/Button';
 
 export default function SignUpPage(props) {
+  // Set state
   const [invalidForm, setValidForm] = useState(false);
   const [error, setError] = useState('');
   const [state, setState] = useState({
@@ -36,24 +37,27 @@ export default function SignUpPage(props) {
     password: '',
     passwordConf: '',
   });
-
   const history = useHistory();
+
+  // Handle input change and update state accordingly
   function handleChange(e) {
     setState({
       ...state,
       [e.target.name]: e.target.value,
     });
   }
+
+  //Handle form submission
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      // refere to the utils/userService, to look at the signup fetch function
+      // Calls the signup function from userService with the input data as argument
       await userService.signup(state);
-      // setTheUser in our app
+      // Calls the handleSignUpOrLogin function passed as prop to update the user state in the app
       props.handleSignUpOrLogin(); // gets the token from localstorage and updates the user state in our app.js
       // with the correct user object from the current token
       // then route to the homepage
-      history.push('/'); // defined above from react-router-dom
+      history.push('/'); 
       // after this we can go whereever
     } catch (err) {
       console.log(err.message);
